@@ -36,4 +36,10 @@ module.exports = {
 
 # 4 Experiencing Tailwind syntax
 
-- 
+- The good thing about Tailwind is that there are pre-made syntax for different styling and you can apply the styling right away by stating in the className.
+
+
+# 5 Content
+- To import the markdown, I just used the react-markdown-github because it provides ways apply the github styling.
+- I used useEffect to import .md and convert them into a text file. 
+
