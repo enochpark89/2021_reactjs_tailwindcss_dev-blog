@@ -6,9 +6,49 @@
 # React
 *What is reactJS?*
 - React is an Open Source view library created and maintained by Facebook. It's a great tool to render the User Interface (UI) of modern web applications.
--   Lets use the full programmatic power of JS.
-  - Uses JSX similar to the HTML.
+-   It lets you use the full programmatic power of JS.
+    - Uses JSX similar to the HTML.
 - React is the view layer of an MVC application (Model View Controller)
+
+*Why use reactJS?*
+- It eleimates complications and repetitions that arise from using only HTML, CSS, and JavaScript.
+    - It makes re-rendering of page much simpler. (*In terms of lines of code*)
+    - React re-render only part that has been changed rather than the whole page, which help a client or a user saves some memory from their end.
+
+# Essentials
+
+- These are essential concepts of reactjs. 
+**This will also be a Proof of Concept (POC)**
+- Official documentation: https://reactjs.org/docs/getting-started.html
+
+1. State
+- State is where your data will be saved. State can be maintained as long as the page isn't refreshed.
+    - ex) 
+    a. Create a state called counter that hold a number.
+    b. Create a button that add 1 to the counter.
+    c. After a change of state, you can render a web page to show the change in a state.
+
+2. setState
+- In order to set a new value to a state, you use userState() function.
+- useState() contains [<value>, <modifier function>]
+- we use ES6 to take out a value and a modifier as below because it is easier.
+```js
+const [value, modifier] = React.useState(<value>) 
+// or setState(<value>)
+```
+- After you create useState, you can use a modifier function to change a value in of the state.
+- The good thing about a modifier function is that it automatically trigger re-render so that the change in the state shows on a web page.
+*re-render and refresh are synonymous.*
+
+3. Change State
+
+- When you want to change a state based on a current value, there are two ways of changing a state.
+```js
+// 1 - might cause unexpected updates
+setCounter(counter+1);
+// 2 - safer: protect against unexpected updates.
+setCounter((current)=> current+1);
+```
 
 # Quickstart:
 - In order to quickly install the React.
