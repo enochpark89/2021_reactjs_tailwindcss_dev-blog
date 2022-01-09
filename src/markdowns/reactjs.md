@@ -1,6 +1,6 @@
 ### Table of Contents  
-[Headers](#react)  
-[Emphasis](#facts) 
+[Introduction](#react)  
+[Essentials Concepts](#essentials) 
 
 
 # React
@@ -21,14 +21,14 @@
 **This will also be a Proof of Concept (POC)**
 - Official documentation: https://reactjs.org/docs/getting-started.html
 
-1. State
+## 1. State
 - State is where your data will be saved. State can be maintained as long as the page isn't refreshed.
     - ex) 
     a. Create a state called counter that hold a number.
     b. Create a button that add 1 to the counter.
     c. After a change of state, you can render a web page to show the change in a state.
 
-2. setState
+## 2. setState
 - In order to set a new value to a state, you use userState() function.
 - useState() contains [<value>, <modifier function>]
 - we use ES6 to take out a value and a modifier as below because it is easier.
@@ -40,7 +40,7 @@ const [value, modifier] = React.useState(<value>)
 - The good thing about a modifier function is that it automatically trigger re-render so that the change in the state shows on a web page.
 *re-render and refresh are synonymous.*
 
-3. Change State
+## 3. Change State
 
 - When you want to change a state based on a current value, there are two ways of changing a state.
 ```js
@@ -49,33 +49,185 @@ setCounter(counter+1);
 // 2 - safer: protect against unexpected updates.
 setCounter((current)=> current+1);
 ```
+- If you are setting a completely new value, you can just put a new value as an argument.
+
+## 4. Components
+
+- Components are functions that you can use in react.
+- You can either import or create them inside the same .js page.
+```html
+<script type="text/babel">
+  // components
+  function SaveBtn() {
+    return <button>Save Changes</button>
+  }
+  function ConfirmBtn() {
+    return <button>Confirm</button>
+  }
+
+  // you can re-use components inside the App().
+  function App() {
+    return (
+      <div>
+        <SaveBtn />
+        <Confirm Btn />
+      </div>
+    )
+  }
+```
+
+## 5. Props
+
+- The props can pass values. This would eliminate a repetitive code.
+- We can send data along to the props. This is very similar to arguments or parameters of a function.
+```js
+// example of sending props into a component
+
+// we use {} because you are extracting prop.text
+function Btn({text}) {
+  console.log(text);
+}
+
+<Btn text={props}>
+```
+
+Example 1)
+
+- Use props to create an event listener.
+
+```js
+
+// text state will be modified once an user click on Btn.
+function App() {
+  const [value, setValue] = React.useState("Save Changes");
+  const changeValue = () => setValue("Revert Changes");
+  return (
+    <div>
+      <Btn styles = {{ color: green}} text={value} onClick={changeValue}>
+    </div>
+  )
+}
+```
+*Whatever you send in the props, it does not automatically work. You have to use it.*
+
+## 6. Memo
+
+- You can create React.memo() to tell React to not re-render when there is no change on the prop. 
+*This is useful when you do not want your page to render all components because it might slow the app down.*
+
+## 7. PropTypes
+
+- PropTypes allow us to check what is the type that we are receiving. It will notify you when mistyped information was passesd down. 
+
+*How to declare a proptype?*
+
+```js
+// suppose there is already component called Btn
+
+Btn.propTypes ={
+  // only text prop can be passed.
+  text: PropTypes.string,
+  // only number prop can be passed.
+  fontSize: PropTypes.number,
+};
+function App() {
+  return 
+    <Btn text =>
+}
+
+```
+- Please refer to tye PropType documentation
+https://reactjs.org/docs/typechecking-with-proptypes.html
+
+- There are many propTypes that you can declare such as instanceOf(), objectOf() etc.
+
+functions:
+- .isRequired
+
 
 # Quickstart:
-- In order to quickly install the React.
-1. npm global add create-ract-app
+
+## 0. NodeJS
+
+- NodeJS comes with npm which helps you install packages.
+- This is needed to install react.
+*npx is optional but it helps keep less file to the computer.*
+
+## 1. Create-react-app
+
+- create-react-app is the quickest way to start a react app.
+    - It run scripts to install many pre-configured files needed.
+
+*How do I use create-react-app?*
+
+- run 'npm global add create-ract-app'
 - This is a global module that is not used often. It requires a frequent update.
-2. npx
-- npx does not require for you to keep the app file in yoru computer. 
-```js
+
+```bash
 npx create-react-app .
 ```
-3. Make src folder the root
-- In order to make a src folder a root, you can create the file called 'jsconfig.json' and put the below code
+
+## 2. Exloror create-react-app
+
+*How to start a development view?*
+- run 'npm run start' in a bash terminal.
+```bash
+npm run start
 ```
-{
-    "compilerOptions": {
-    "baseUrl": "src"
-    }
+
+*How does react app works?*
+- inside public/index.html, there is <div id="root"></div>. 
+- ReactDOM is basically convert JSX into html code and put them insdie the <div id="root">
+
+## 3. Test create-react-app
+
+- App.js is where all the app code will gather.
+App.js
+```js
+import Button from "./Button"
+
+function App() {
+  return (
+<div>
+  <h1>Welcome back!!! </h1>
+  <Button text={"Continue"}>
+</div>
+  );
+}
+```
+
+- Button.js is created to create a button with a prop called text.
+Button.js
+```js
+import PropTypes from "prop-types";
+import styles from "./Button.module.css";
+
+function Button({ text }) {
+  // import title class from styles to apply the CSS.
+  return <button className={styles.title}>{text}</button>;
+}
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+};
+
+export default Button;
+```
+
+- .module.css is way to add css to JSX
+Button.module.css:
+```css
+.title {
+  color: white;
+  background-color: tomato;
 }
 ```
 
 # Facts
-
-- Shell > npm start will keep the server running and updated on each changes. 
-- In React, everything is components.
-- Every page of the react must import React from "react" because React wouldn't be aware of the file if you don't. 
-- I recommend working all things in the App.js and seperate the files later in order because this might be easy to keep track of everything and all the changes that can happen. 
-
+ 
+- In React, everything is components. Components are functions.
+- Every page of the react must import React from "react"because React wouldn't be aware of the file if you don't.
+- I recommend working all things in the App.js and seperate the files later in order because this might be easy to keep track of everything and all the changes that can happen.
 - Async()...wait is used when you want React to wait for the data to be fetched and move return the data instead of skipping over.
 ```javascript
 Async () {
@@ -132,34 +284,6 @@ export default Potato;
 
 # Fundamentals:
 
-# 1.0. Props
-*What is props?*
-- Within JSX file, you can send many props to the children.  
-
-  ex 1: Inheriting props.
-  App.js
-  ```js
-  import React from "react";
-
-  // Take the favorite from the object using ES6.
-  function Food({ favourite }) {
-    return <h1>I like {favourite}</h1>;
-  }
-
-  // you can send multiple props to the Food Component.
-  function App() {
-    return (
-      <div>
-        <h1>Hello</h1>
-        <Food favourite="kimchi" />
-        <Food favourite="ramen" />
-        <Food favourite="samgiopsal" />
-        <Food favourite="chukumi" />
-      </div>
-    );
-  }
-  ```
-
 # 2.0. PropTypes
 *What are PropTypes?*
 - you can install prop-types to make sure that the types of the props are correct.
@@ -172,51 +296,7 @@ Food.propTypes = {
   picture: PropTypes.string.isRequired,
   rating: PropTypes.number
 };
-
 ```
-# 3.0. State
-
-- Extends React.Component from class App if you want to use state. 
-
-```js
-class App extends React.Component {
-```
-- The state is developed primarily to refresh the page whenever the change has been made on the data being displayed. 
-
-- Basic example of using state: Add 1 or Subtract 1
-```js
-import React from "react";
-import PropTypes from "prop-types";
-
-class App extends React.Component {
-  // state Object with value is declared.
-  state = {
-    count: 0
-  };
-
-  // add 1 if the button is clicked.
-  add = () => {
-    this.setState(current => ({ count: current.count + 1 }));
-  };
-
-  // subtrat 1 if the button is clicked.
-  minus = () => {
-    this.setState(current => ({ count: current.count - 1 }));
-  };
-  render() {
-    return (
-      <div>
-        <h1>The number is: {this.state.count}</h1>
-        <button onClick={this.add}>Add</button>
-        <button onClick={this.minus}>Minus</button>
-      </div>
-    );
-  }
-}
-
-export default App;
-```
-
 # 4.0 Mounting
 
 - Component life cycle is important because you can expect how things will be executed in order. 
