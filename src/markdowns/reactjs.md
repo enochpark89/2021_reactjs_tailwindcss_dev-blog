@@ -141,8 +141,72 @@ https://reactjs.org/docs/typechecking-with-proptypes.html
 
 - There are many propTypes that you can declare such as instanceOf(), objectOf() etc.
 
-functions:
-- .isRequired
+## 8. useEffect
+
+useEffect() documentation:
+https://ko.reactjs.org/docs/hooks-effect.html
+
+### Problem 1: continuous re-rendering.
+- When you get the API, you do not want to get the API everytime the value changes.
+- Review: *when you change a state, the whole page renders.*
+- Expectation: We need to run the API query first time when we run and do not run again. 
+
+*What do we do if we want something to render only once?*
+- useEffect() solves the problem because useEffect() will not be re-rendered even the state changes.
+- useEffect() will only going to run 1 time.
+
+### Problem 2: search API
+- You want to implement search functionality to users.
+- You only want to code to run only when user changes a specific state.
+- If you would like code inside useEffect() to run when certain state changes, you can include them inside the bracket as below
+
+```js
+// state called keyword is created.
+const [keyword, setKeyword] = useState("");
+useEffect(()=> {
+// will run if the test_state is changed.
+},[keyword])
+```
+
+## 9. Cleanup functions
+
+- you can use the state to either show or to hide code.
+
+```js
+// assume that the <Hello> component exist. As long as showing is true, it will show <Hello>. Otherwise, <Hello> component will disappear.
+function App() {
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing((prev) => !prev);
+  return (
+    <div>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+    </div>
+  );
+}
+```
+- Thankfully, in React, when you hide, it actually destroys to HTML for your convenient.
+- In order to view what is being destroyed, you can use a cleanup function as below
+```js
+ useEffect(function () {
+    console.log("hi :)");
+    // this part of clean up function will run as the HTML is destroyed or hidden.
+    return function () {
+      console.log("bye :(");
+    };
+// Rewrite of the cleanup function
+function Hello() {
+  function byFn() {
+    console.log("bye :(");
+  }
+  function hiFn() {
+    console.log("created :)");
+    return byFn;
+  }
+  useEffect(hiFn, []);
+  return <h1>Hello</h1>;
+}
+```
 
 
 # Quickstart:
@@ -226,7 +290,7 @@ Button.module.css:
 # Facts
  
 - In React, everything is components. Components are functions.
-- Every page of the react must import React from "react"because React wouldn't be aware of the file if you don't.
+- Every page of the react must import React from "react" because React wouldn't be aware of the file if you don't.
 - I recommend working all things in the App.js and seperate the files later in order because this might be easy to keep track of everything and all the changes that can happen.
 - Async()...wait is used when you want React to wait for the data to be fetched and move return the data instead of skipping over.
 ```javascript
