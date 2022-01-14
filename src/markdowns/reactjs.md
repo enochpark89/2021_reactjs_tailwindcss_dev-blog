@@ -207,6 +207,166 @@ function Hello() {
   return <h1>Hello</h1>;
 }
 ```
+## 10. Hooks
+
+- Hooks are additional function in React that others have created for their convenience. 
+- This is basically creating an add-on with useState() and useEffect() to make the job much easier. 
+- You can download what others have created from npm website.
+
+Hooks created:
+
+1. useState
+
+ex1: Increment and Decrement
+```js
+import "./styles.css";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+
+export default function App() {
+  const [item, setItem] = useState(1);
+  const incrementItem = () => setItem(item+1);
+  const decrementItem = () => setItem(item -1);
+
+// when the user clicks on the button it will either increment or decrement item.
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox {item}</h1>
+      <h2>Start editing to see some magic happen!</h2>
+    <button onClick={incrementItem}>Increment</button>
+    <button onClick={decrementItem}>Decrement</button>
+
+    </div>
+  );
+}
+
+```
+
+ex2: useInput - Put a value and fire an event
+
+```js
+import "./styles.css";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+
+const userInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event) => {
+    console.log(event.target);
+  };
+  return { value, onChange };
+};
+
+export default function App() {
+
+  const name = userInput("Mr.");
+  
+  return (
+    <div className="App">
+      <h1>Hello </h1>
+      // {...name} will fire all functions inside the userInput.
+      
+      <input placeholder="Name" {...name} />
+    </div>
+  );
+}
+
+```
+
+ex3: useInput - expand it. 
+
+- Add a validation
+
+```js
+import "./styles.css";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+
+// Add VAlidator so that what they type is validated.
+
+const userInput = (initialValue, validator) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event) => {
+    const {
+      target: { value }
+    } = event;
+    let willUpdate = true;
+    if (typeof validator === "function") {
+      willUpdate = validator(value);
+    }
+    if (willUpdate) {
+      setValue(value);
+    }
+  };
+  return { value, onChange };
+};
+
+// default input will be default.
+// maxLen will check whether the value inside the input has a length less than 10.
+
+export default function App() {
+  const maxLen = (value) => value.length <= 10;
+  // const maxLen = valuoe => !value.includes("@")
+
+  const name = userInput("Default", maxLen);
+  return (
+    <div className="App">
+      <h1>Hello </h1>
+      <input placeholder="Name" {...name} />
+    </div>
+  );
+}
+
+```
+
+2. useEffect
+ex: 
+```
+  useEffect(()=> {
+    sayHello();
+  });
+```
+- First argument is an Effect.
+- Second argument is a Dependency.
+ex2:
+```js
+useEffect(sayHello, [number]);
+// fire sayHello function when the number variable changes. 
+```
+
+- Reference: 
+
+3. useRef
+
+- This works as a HTML ID for JSX.
+- you can use this to add an event listener.
+
+
+*useContext and useReducer make your code less and do a beautiful things*
+
+Introduction to useContext and Redux
+*What is context? and why do you need Redux?*
+- If you have a website, there are many screens. If all of the pages have the photo of the user or an email of the user, 
+
+- Two options
+  1. every screen, every mount, you ask for the data in API. 
+  2. If you have three objects, there are so many request of API.
+  Since there are so many requests, they wanted to store states in one component. one component will give props for three screen.
+  However, there is a problem when you need to edit the user. Then, the Component need an Higher-Order function. Because of this, we need Redux or State Management Library. State management only is needed when the component gets too big.
+
+  - The Header might have avatar picture.
+  - when this happens, you have to send User Prop to Higher-Order Component, the screen send User Prop to the HEader, Header needs to send User Prop to the avatar.
+  - When there are many Components with many Props, this might cause an error. Instead of having one big component, you can have one data storage or warehouse. Here, where all data is coming from. This is where you save the user avatar, email, and others. When the header needs an avatar, it will get the avatar from the store. 
+
+  Instead of keeping your data is Component, State, to the Props, you can have data storage that gives data whenever needed.
+
+4. useContext
+
+
+
+5. useReducer
+
+
 
 
 # Quickstart:
@@ -402,163 +562,6 @@ ex1: get the JSON file from the API.
     const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
   };
 ```
-
-# Hooks - in addition to ReactJS
-
-- People can develop their own hooks. 
-- Hooks is basically to let the users hook into the React Componenet. > everything becomes a functional programming. 
-
-1. useState
-
-ex1: Increment and Decrement
-```js
-import "./styles.css";
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-export default function App() {
-  const [item, setItem] = useState(1);
-  const incrementItem = () => setItem(item+1);
-  const decrementItem = () => setItem(item -1);
-
-// when the user clicks on the button it will either increment or decrement item.
-  return (
-    <div className="App">
-      <h1>Hello CodeSandbox {item}</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    <button onClick={incrementItem}>Increment</button>
-    <button onClick={decrementItem}>Decrement</button>
-
-    </div>
-  );
-}
-
-```
-
-ex2: useInput - Put a value and fire an event
-
-```js
-import "./styles.css";
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-const userInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = (event) => {
-    console.log(event.target);
-  };
-  return { value, onChange };
-};
-
-export default function App() {
-
-  const name = userInput("Mr.");
-  
-  return (
-    <div className="App">
-      <h1>Hello </h1>
-      // {...name} will fire all functions inside the userInput.
-      
-      <input placeholder="Name" {...name} />
-    </div>
-  );
-}
-
-```
-
-ex3: useInput - expand it. 
-
-- Add a validation
-
-```js
-import "./styles.css";
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-
-// Add VAlidator so that what they type is validated.
-
-const userInput = (initialValue, validator) => {
-  const [value, setValue] = useState(initialValue);
-  const onChange = (event) => {
-    const {
-      target: { value }
-    } = event;
-    let willUpdate = true;
-    if (typeof validator === "function") {
-      willUpdate = validator(value);
-    }
-    if (willUpdate) {
-      setValue(value);
-    }
-  };
-  return { value, onChange };
-};
-
-// default input will be default.
-// maxLen will check whether the value inside the input has a length less than 10.
-
-export default function App() {
-  const maxLen = (value) => value.length <= 10;
-  // const maxLen = valuoe => !value.includes("@")
-
-  const name = userInput("Default", maxLen);
-  return (
-    <div className="App">
-      <h1>Hello </h1>
-      <input placeholder="Name" {...name} />
-    </div>
-  );
-}
-
-```
-
-2. useEffect
-ex: 
-```
-  useEffect(()=> {
-    sayHello();
-  });
-```
-- First argument is an Effect.
-- Second argument is a Dependency.
-ex2:
-```js
-useEffect(sayHello, [number]);
-// fire sayHello function when the number variable changes. 
-```
-
-- Reference: 
-
-3. useRef
-
-- This works as a HTML ID for JSX.
-- you can use this to add an event listener.
-
-
-*useContext and useReducer make your code less and do a beautiful things*
-
-Introduction to useContext and Redux
-*What is context? and why do you need Redux?*
-- If you have a website, there are many screens. If all of the pages have the photo of the user or an email of the user, 
-
-- Two options
-  1. every screen, every mount, you ask for the data in API. 
-  2. If you have three objects, there are so many request of API.
-  Since there are so many requests, they wanted to store states in one component. one component will give props for three screen.
-  However, there is a problem when you need to edit the user. Then, the Component need an Higher-Order function. Because of this, we need Redux or State Management Library. State management only is needed when the component gets too big.
-
-  - The Header might have avatar picture.
-  - when this happens, you have to send User Prop to Higher-Order Component, the screen send User Prop to the HEader, Header needs to send User Prop to the avatar.
-  - When there are many Components with many Props, this might cause an error. Instead of having one big component, you can have one data storage or warehouse. Here, where all data is coming from. This is where you save the user avatar, email, and others. When the header needs an avatar, it will get the avatar from the store. 
-
-  Instead of keeping your data is Component, State, to the Props, you can have data storage that gives data whenever needed.
-
-4. useContext
-
-
-
-5. useReducer
-
 
 
 
