@@ -1516,3 +1516,26 @@ if (typeof(Storage) !== "undefined") {
 - ex: Examples: Facebook/Twitter updates, stock price updates, news feeds, sport results, etc.
 
 
+# Useful functions
+
+1. Bullet points - Display squares instead of bullets
+```html
+<ul style="
+list-style-type:square
+;">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+```
+
+2. Use the correct HTML attribute to display letters (uppercase ABC) instead of numbers.
+```html
+<ol 
+type="A"
+>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol>
+```

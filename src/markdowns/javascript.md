@@ -1,18 +1,18 @@
+### Table of Contents
+1. [Introduction](#javascript)
+2. [Keywords](#keywords)
+3. [Advice](#advice)
+4. [DOM](#dom)
+
 # JavaScript
+*What is Javascript?*  
 - JavaScript is originally designed for a browser. 
 - JavaScript can be used both front and backend. 
 - JavaScript - FrontEnd - the purpose of the JavaScript was originally to make the website interactive.
 - There are many frameworks like ReactJs and VueJs that can save some time while designing the front-end of the web. 
 - There are many framworks for backend such as NodeJS, NestJS, and others. 
 
-# Advice
-- Almost always, many JavaScript developers are experiencing same problems. If you search for the available function, it will most likely to be there. 
-- When you are making a eventHandler, try to change the class that lead to the change of style rather than modifying the style itself. 
- 
-
-== Advice End ==
-
-# Key Terms:
+# keywords:
 
 1. Falsy values: Values like [false, null, 0, "", undefined, and NaN]. 
 2. Constructor:
@@ -113,75 +113,14 @@ add(10)(20)(30);
 `Hello ${username}`;
 // This will printe Hello and whatever inside the username var.
 ```
-===Key Terms End===
 
-# Regex
+# Advice
+- Almost always, many JavaScript developers are experiencing same problems. If you search for the available function, it will most likely to be there. 
+- When you are making a eventHandler, try to change the class that lead to the change of style rather than modifying the style itself. 
 
-1. Split between the Lowercase and Uppercase
 
-ex1: Use Regex to split between the lowerCase and the uppercase
-```js
-function spinalCase(str) {
-  // Replace low-upper case to low-space-uppercase
-  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
-  // Split on whitespace and underscores and join with dash
-  return str
-    .toLowerCase()
-    .split(/(?:_| )+/)
-    .join("-");
-}
 
-// test here
-spinalCase("This Is Spinal Tap");
-/*
-Code Explanation
-Similar to the first solution, the first replace() puts a space before any encountered uppercase characters in the string str so that the spaces can be replaced by dashes later on.
-Instead of using replace() here to replace whitespace and underscores with dashes, the string is split() on the regular expression /(?:_| )+/ and join()-ed on -.
-*/
-```
-
-ex2:
-```js
-function spinalCase(str) {
-  // "It's such a fine line between stupid, and clever."
-  // --David St. Hubbins
-
-  return str
-    .split(/\s|_|(?=[A-Z])/)
-    .join("-")
-    .toLowerCase();
-}
-/*
-Code Explanation:
-Split the string at one of the following conditions (converted to an array)
-a whitespace character [\s] is encountered
-underscore character [_] is encountered
-or is followed by an uppercase letter [(?=[A-Z])]
-Join the array using a hyphen (-)
-Lowercase the whole resulting string
-*/
-```
-
-2. Remove all special characters
-
-- There are several ways to remove special characters from the string.
-ex1: 
-```javascript
-string = string.replace(/[^a-zA-Z0-9]/g, '');
-```
-
-ex2:
-```javascript
-var desired = stringToReplace.replace(/[^\w\s]/gi, '')
-```
-
-3. Use the website that shows all the description regarding regex and it does the testing also. 
-
-link: https://regex101.com/
-
-== Regex End ==
-
-# Key Concepts
+# Essentials
 
 1. Array: list of data.
 ```js
@@ -290,10 +229,6 @@ flyMixin(plane);
 ```
 
 ## Functional Programming
-
-
-== Key Concepts End==
-
 
 <!-- # Real case scenario
 
@@ -1197,4 +1132,651 @@ c. Use toggle() function to shorten the code
 ```
 - when you use .toggle, it will does the job of classList that we covered without writing a full code.
 
-== Function-list End ==
+# Regex
+
+1. Split between the Lowercase and Uppercase
+
+ex1: Use Regex to split between the lowerCase and the uppercase
+```js
+function spinalCase(str) {
+  // Replace low-upper case to low-space-uppercase
+  str = str.replace(/([a-z])([A-Z])/g, "$1 $2");
+  // Split on whitespace and underscores and join with dash
+  return str
+    .toLowerCase()
+    .split(/(?:_| )+/)
+    .join("-");
+}
+
+// test here
+spinalCase("This Is Spinal Tap");
+/*
+Code Explanation
+Similar to the first solution, the first replace() puts a space before any encountered uppercase characters in the string str so that the spaces can be replaced by dashes later on.
+Instead of using replace() here to replace whitespace and underscores with dashes, the string is split() on the regular expression /(?:_| )+/ and join()-ed on -.
+*/
+```
+
+ex2:
+```js
+function spinalCase(str) {
+  // "It's such a fine line between stupid, and clever."
+  // --David St. Hubbins
+
+  return str
+    .split(/\s|_|(?=[A-Z])/)
+    .join("-")
+    .toLowerCase();
+}
+/*
+Code Explanation:
+Split the string at one of the following conditions (converted to an array)
+a whitespace character [\s] is encountered
+underscore character [_] is encountered
+or is followed by an uppercase letter [(?=[A-Z])]
+Join the array using a hyphen (-)
+Lowercase the whole resulting string
+*/
+```
+
+2. Remove all special characters
+
+- There are several ways to remove special characters from the string.
+ex1: 
+```javascript
+string = string.replace(/[^a-zA-Z0-9]/g, '');
+```
+
+ex2:
+```javascript
+var desired = stringToReplace.replace(/[^\w\s]/gi, '')
+```
+
+3. Use the website that shows all the description regarding regex and it does the testing also. 
+
+link: https://regex101.com/
+
+# DOM
+
+- When a web page is loaded, the browser creates a Document Object Model of the page.
+
+- The HTML DOM model is constructed as a tree of Objects:
+![DOM tree diagram!](/img/html_dom.gif)
+
+*What is the DOM?*
+- The DOM is a W3C (World Wide Web Consortium) standard.
+- The DOM defines a standard for accessing documents:
+
+*The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document.*
+
+- The W3C DOM standard is separated into 3 different parts:
+
+  - Core DOM - standard model for all document types
+  - XML DOM - standard model for XML documents
+  - HTML DOM - standard model for HTML documents
+
+*What is the HTML DOM?*
+
+- The HTML DOM is a **standard object model** and programming interface for HTML. It defines:
+
+  - The HTML elements as objects
+  - The properties of all HTML elements
+  - The methods to access all HTML elements
+  - The events for all HTML elements
+- In other words: **The HTML DOM is a standard for how to get, change, add, or delete HTML elements.**
+
+# 1. Methods
+
+- HTML DOM methods are actions you can perform (on HTML Elements).
+- HTML DOM properties are values (of HTML Elements) that you can set or change.
+- The HTML DOM can be accessed with JavaScript (and with other programming languages).
+    - All HTML elements are defined as objects.
+    - The programming interface is the properties and methods of each object.
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>My First Page</h2>
+
+<p id="demo"></p>
+
+<script>
+// .getElementByID() get the paragraph id named demo.
+document.getElementById("demo").innerHTML = "Hello World!";
+</script>
+
+</body>
+</html>
+```
+
+# 2. Document
+
+- The HTML DOM document object is the owner of all other objects in your web page.
+- The document object represents your web page.
+- Below are some examples of how you can use the document object to access and manipulate HTML.
+
+*How to access the HTML elements?*
+
+- document.getElementById(id): Find an element by element id
+- document.getElementsByClassName(name): Find elements by class name
+- document.getElementsByTagName(name): 	Find elements by tag name
+
+*How to change HTML elements?*
+- element.innerHTML/element.innerText: Change the inner HTML of an element
+- element.style.property = "new style": Change the style of an HTML element
+- element.attribute = "new value": Change the attribute value of an HTML element
+
+*How to add and delete elements?*
+- document.createElement(element): Create an HTML element
+- document.removeChild(element): Remove an HTML element
+- document.appendChild(element): Add an HTML element
+
+*How to find HTML Objects?*
+- URL: https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+# 3. Elements
+
+- To manipulate HTML elements, you have to find the element first. There are several ways of finding an element.
+
+## a. Find by Id
+```html
+<!-- Select with ID. -->
+const element = document.getElementById("intro");
+```
+
+## b. Find by Tag Name
+
+```html
+<!-- get element by a tag name: select all <p>-->
+const element = document.getElementsByTagName("p");
+```
+
+## c. Find by a ClassName
+
+```html
+const x = document.getElementsByClassName("intro");
+```
+
+## d. CSS Selector
+```html
+const x = document.querySelectorAll("#id");
+const x = document.querySelectorAll(".class");
+```
+
+## e. DOM HTML
+
+- The easiest way to modify the content of an HTML element is by using the innerHTML property.
+
+
+```html
+<html>
+<body>
+
+<p id="p1">Hello World!</p>
+
+<script>
+document.getElementById("p1").innerHTML = "New text!";
+</script>
+
+</body>
+</html>
+```
+
+# 4. HTML
+
+1. Change HTML Content
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="id01">Old Heading</h1>
+
+<script>
+const element = document.getElementById("id01");
+element.innerHTML = "New Heading";
+</script>
+
+</body>
+</html>
+```
+
+
+2. Change Value of an Attribute
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="myImage" src="smiley.gif">
+
+<script>
+// Convention: document.getElementById(id).attribute = new value
+document.getElementById("myImage").src = "landscape.jpg";
+</script>
+
+</body>
+</html>
+```
+
+3. Document.write()
+In JavaScript, document.write() can be used to write directly to the HTML output stream:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Bla bla bla</p>
+
+<!-- Must be used within the <script> element -->
+<script>
+document.write(Date());
+</script>
+
+<p>Bla bla bla</p>
+
+</body>
+</html>
+```
+
+# 4. Forms
+
+- HTML form validation can be done by JavaScript.
+
+1. Empty
+
+```js
+function validateForm() {
+  // if document form element > name:myForm > name:fname value is empty, create an alert. 
+  let x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+```
+
+```html
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+Name: <input type="text" name="fname">
+<input type="submit" value="Submit">
+</form>
+```
+
+# 5. CSS
+
+- Style can be modified using DOM.
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="id1">My Heading 1</h1>
+
+<button type="button"
+onclick="document.getElementById('id1').style.color = 'red'">
+Click Me!</button>
+
+</body>
+</html>
+```
+
+# 6. Animation
+
+- Animation can be created using a JavaScript.
+
+ex: Make the box move across the canvas.
+```css
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  background: red;
+}
+```
+
+```js
+function myMove() {
+  let id = null;
+  const elem = document.getElementById("animate");
+  let pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 5);
+  function frame() {
+    if (pos == 350) {
+      clearInterval(id);
+    } else {
+      pos++;
+      elem.style.top = pos + 'px';
+      elem.style.left = pos + 'px';
+    }
+  }
+}
+```
+
+# 7. Events
+
+- HTML DOM allows JavaScript to react to HTML events:
+
+1. onClick
+
+- To execute code when a user clicks on an element, add JavaScript code to an HTML event attribute:
+
+ex:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 onclick="changeText(this)">Click on this text!</h1>
+
+<script>
+function changeText(id) {
+  id.innerHTML = "Ooops!";
+}
+</script>
+
+</body>
+</html>
+```
+2. onmouseover and onmouseout
+
+- You can create an event when the mouse enters a certain area and when the mouse moves out a certain area.
+
+# 8. EventListener
+
+- There is another way to activate an event. You can use addEventListener() method.
+
+1. addEventListener()
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript addEventListener()</h2>
+
+<p>This example uses the addEventListener() method to attach a click event to a button.</p>
+
+<button id="myBtn">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+document.getElementById("myBtn").addEventListener("click", displayDate);
+
+function displayDate() {
+  document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
+</body>
+</html> 
+
+```
+
+- You can add Many Event Handlers to the Same Element.
+
+2. removeEventListener()
+
+```js
+// this will deactivate an event listener.
+element.removeEventListener("mousemove", myFunction);
+```
+
+# 9. Navigation
+
+- With the HTML DOM, you can navigate the node tree using node relationships.
+
+## a. Node Relationships
+
+- The nodes in the node tree have a hierarchical relationship to each other.
+Rules:
+  - The top node is called the root.
+  - Every node has exactly one parent, except the root. 
+  - Siblings are nodes with the same parents.
+
+
+Node in HTML documents:
+  `<html>` is the root node
+  `<html>` has no parents
+  `<html>` is the parent of `<head>`and `<body>`
+  `<head>` is the first child of `<html>`
+  `<body>` is the last child of `<html>`
+
+## b. Navigate nodes
+
+- You can use the following node properties to navigate between nodes with JavaScript:
+
+- parentNode
+- childNodes[nodenumber]
+- firstChild
+- lastChild
+- nextSibling
+- previousSibling
+
+ex 1: Get a value of a first child.
+
+```html
+myTitle = document.getElementById("demo").firstChild.nodeValue;
+```
+
+ex 2: Get a value of nth child of your choice.
+
+```html
+myTitle = document.getElementById("demo").childNodes[0].nodeValue;
+```
+
+ex 3: Document 
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTMLDOM</h2>
+<p>Displaying document.documentElement</p>
+
+<p id="demo"></p>
+
+<script>
+// This will repain or re-render <h2> and <p> in <p id="demo">
+document.getElementById("demo").innerHTML = document.documentElement.innerHTML;
+</script>
+
+</body>
+</html>
+```
+
+ex 4: nodeName Property
+
+The nodeName property specifies the name of a node.
+
+NodeName is
+- read-only
+- an element node is the same as the tag name
+- an attribute node is the attribute name
+- a text node is always #text
+- the document node is always #document
+```html
+<h1 id="id01">My First Page</h1>
+<p id="id02"></p>
+
+<script>
+document.getElementById("id02").innerHTML = document.getElementById("id01").nodeName;
+</script>
+```
+
+# 10. Nodes
+
+- You can add/remove nodes or HTML elements.
+
+1. Append
+
+```html
+<div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+  // create element or a node and append it to an existing element.
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const element = document.getElementById("div1");
+element.appendChild(para);
+</script>
+```
+
+2. Remove
+
+```html
+<div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const parent = document.getElementById("div1");
+const child = document.getElementById("p1");
+parent.removeChild(child);
+</script>
+```
+
+3. Replace
+```html
+<div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const para = document.createElement("p");
+const node = document.createTextNode("This is new.");
+para.appendChild(node);
+
+const parent = document.getElementById("div1");
+const child = document.getElementById("p1");
+// replace exisiting child with another. (horrible)
+parent.replaceChild(para, child);
+</script>
+```
+
+# 11. Collections
+
+- The getElementsByTagName() method returns an HTMLCollection object.
+
+- An HTMLCollection object is an array-like list (collection) of HTML elements.
+
+- You can get collection of certain element and you can access them with an index number. 
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTML DOM</h2>
+
+<p>Hello World!</p>
+
+<p>Hello Norway!</p>
+
+<p id="demo"></p>
+
+<script>
+const myCollection = document.getElementsByTagName("p");
+
+document.getElementById("demo").innerHTML = "The innerHTML of the second paragraph is: " + myCollection[1].innerHTML;
+
+</script>
+
+</body>
+</html>
+```
+
+# 12. Node Lists
+
+- Like HTML collections, you can use querySelectorAll() function to get a node list.
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTML DOM</h2>
+
+<p>Hello World!</p>
+
+<p>Hello Norway!</p>
+
+<p id="demo"></p>
+
+<script>
+// select all elements that are p.
+const myNodelist = document.querySelectorAll("p");
+
+document.getElementById("demo").innerHTML = "The innerHTML of the second paragraph is: " + myNodelist[1].innerHTML;
+
+</script>
+
+</body>
+</html>
+
+```
+
+# Ajax
+
+- With Ajax, 
+1. you read data from a web server after the page has loaded 
+2. update a web page without reloading the page
+3. send data to a web server in the background.
+
+ex:
+```js
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+    }
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+```
+
+*What is Ajax?*
+- Ajax stands for Asynchronous JavaScript And XML. 
+- Ajax is NOT a programming language
+- Ajax just uses a combination of 
+    1. A browser built-in XMLHttpRequest object (to request data from a web server)
+    2. JavaScript and HTML DOM. 
+
+Steps:
+1. A browser sends a request to the server.
+2. Server process HTTPrequest and give responses.
+3. A browser receives a data, JS process data, and update page content.
+
+# 1. XMLHttpRequest 
+
+*What is XMLHttpRequest object?*
+-  The XMLHttpRequest object can be used to exchange data with a web server behind the scenes.
+*This means that it is possible to update parts of a web page, without reloading the whole page.*
+
+- The keystone of AJAX is the XMLHttpRequest object.
+
+1. Create an XMLHttpRequest object
+2. Define a callback function
+3. Open the XMLHttpRequest object
+4. Send a Request to a server
+
