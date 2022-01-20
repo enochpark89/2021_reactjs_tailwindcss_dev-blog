@@ -3,6 +3,7 @@
 2. [Keywords](#keywords)
 3. [Advice](#advice)
 4. [DOM](#dom)
+5. [JQuery](#JQuery)
 
 # JavaScript
 *What is Javascript?*  
@@ -1767,7 +1768,7 @@ Steps:
 2. Server process HTTPrequest and give responses.
 3. A browser receives a data, JS process data, and update page content.
 
-# 1. XMLHttpRequest 
+# 1. XMLHttp
 
 *What is XMLHttpRequest object?*
 -  The XMLHttpRequest object can be used to exchange data with a web server behind the scenes.
@@ -1780,3 +1781,300 @@ Steps:
 3. Open the XMLHttpRequest object
 4. Send a Request to a server
 
+1. Send a Request
+
+```html
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send()
+```
+
+ex:
+```js
+// Create an XMLHttpRequest object
+const xhttp = new XMLHttpRequest();
+
+// Define a callback function
+xhttp.onload = function() {
+  // Here you can use the Data
+}
+
+// Send a request
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+```
+
+- For security reasons, modern browsers do not allow access across domains.
+- This means that both the web page and the XML file it tries to load, must be located on the same server.
+
+# 2. XMLHttpRequest
+
+- The XMLHttpRequest object is used to request data from a server.
+
+1. Send a request to a server
+
+format:
+```js
+// open(method, url, async) - specifies the type of request.
+// url - an address to a file on a server.
+xhttp.open("GET", "ajax_info.txt", true);
+xhttp.send();
+```
+
+*What is it mean to send a request asynchronously?*
+- By sending asynchronously, the JavaScript does not have to wait for the server response, but can instead:
+
+Benefits:
+- execute other scripts while waiting for server response
+- deal with the response after the response is ready
+
+2. GET request
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Request data</button>
+<p id="demo"></p>
+
+<script>
+
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  // onload occurs when the data is loaded.
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+  // send a GET request to the server and retrieve data from demo_get.asp
+  xhttp.open("GET", "demo_get.asp");
+  xhttp.send();
+}
+</script>
+
+</body>
+</html>
+
+```
+
+*How to avoid a cached result?*
+```js
+xhttp.open("GET", "demo_get.asp?t=" + Math.random());
+xhttp.send();
+```
+
+*How do you want to send information with GET request?*
+```js
+xhttp.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
+xhttp.send();
+```
+
+3. POST requests
+
+- To POST data like an HTML form, add an HTTP header with setRequestHeader(). Specify the data you want to send in the send() method:
+
+```js
+xhttp.open("POST", "ajax_test.asp");
+xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xhttp.send("fname=Henry&lname=Ford");
+```
+
+4. Synchronous Request
+
+- To execute a synchronous request, change the third parameter in the open() method to false:
+
+# 3. Server Response
+
+1. responseText
+
+- The responseText property returns the server response as a JavaScript string, and you can use it accordingly:
+
+```js
+document.getElementById("demo").innerHTML = xhttp.responseText;
+```
+
+2. responseXML
+
+- The XMLHttpRequest object has an in-built XML parser.
+- The responseXML property returns the server response as an XML DOM object.
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p id="demo"></p>
+ 
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const x = xmlDoc.getElementsByTagName("ARTIST");
+  let txt = "";
+  for (let i = 0; i < x.length; i++) {
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
+```
+3. getAllREsponseHeader()
+
+- The getAllResponseHeaders() function returns all the header information of a resource, like length, server-type, content-type, last-modified, etc:
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<p>The getAllResponseHeaders() function returns all the header information of a resource, like length, server-type, content-type, last-modified, etc:</p>
+
+<p id="demo"></p>
+
+<script>
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML =
+  this.getAllResponseHeaders();
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
+```
+4. XMLHttpRequest
+
+- The getResponseHeader() function is used to return specific header information from a resource, like length, server-type, content-type, last-modified, etc:
+
+```js
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<p>The getResponseHeader() function is used to return specific header information from a resource, like length, server-type, content-type, last-modified, etc:</p>
+
+<p>Last modified: <span id="demo"></span></p>
+
+<script>
+const xhttp=new XMLHttpRequest();
+xhttp.onload = function() {
+  document.getElementById("demo").innerHTML =
+  this.getResponseHeader("Last-Modified");
+}
+xhttp.open("GET", "ajax_info.txt");
+xhttp.send();
+</script>
+
+</body>
+</html>
+
+```
+
+# 4. XML file
+
+- Suppose that there is XML file called "cd_catalog.xml," you can retrieve data and display as below
+
+```js
+function loadDoc() {
+  // 1. create XMLHttpRequest. When the data loads, it executes myFunction and pass data as an argumet.
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {myFunction(this);}
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+function myFunction(xml) {
+  // 
+  const xmlDoc = xml.responseXML;
+  // Get a tag named CD
+  const x = xmlDoc.getElementsByTagName("CD");
+  // Create a table with an Artist and a Title headers.
+  let table="<tr><th>Artist</th><th>Title</th></tr>";
+  // navigate each row of CD and Get Artist and Title information and display as a table.
+  for (let i = 0; i <x.length; i++) {
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+```
+cd_catalog.xml:
+```xml
+<CATALOG>
+<CD>
+<TITLE>Empire Burlesque</TITLE>
+<ARTIST>Bob Dylan</ARTIST>
+<COUNTRY>USA</COUNTRY>
+<COMPANY>Columbia</COMPANY>
+<PRICE>10.90</PRICE>
+<YEAR>1985</YEAR>
+</CD>
+<CD>
+<TITLE>Hide your heart</TITLE>
+<ARTIST>Bonnie Tyler</ARTIST>
+<COUNTRY>UK</COUNTRY>
+<COMPANY>CBS Records</COMPANY>
+<PRICE>9.90</PRICE>
+<YEAR>1988</YEAR>
+</CD>
+```
+
+# 5. PHP and ASP
+
+- In the same way, you can call .php or .asp files. 
+
+# 6. Database
+
+- You can ask for a request for .php using the Javascript and get a result using the php as below
+
+```php
+<?php
+$mysqli = new mysqli("servername", "username", "password", "dbname");
+if($mysqli->connect_error) {
+  exit('Could not connect');
+}
+
+$sql = "SELECT customerid, companyname, contactname, address, city, postalcode, country
+FROM customers WHERE customerid = ?";
+
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("s", $_GET['q']);
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($cid, $cname, $name, $adr, $city, $pcode, $country);
+$stmt->fetch();
+$stmt->close();
+
+echo "<table>";
+echo "<tr>";
+echo "<th>CustomerID</th>";
+echo "<td>" . $cid . "</td>";
+echo "<th>CompanyName</th>";
+echo "<td>" . $cname . "</td>";
+echo "<th>ContactName</th>";
+echo "<td>" . $name . "</td>";
+echo "<th>Address</th>";
+echo "<td>" . $adr . "</td>";
+echo "<th>City</th>";
+echo "<td>" . $city . "</td>";
+echo "<th>PostalCode</th>";
+echo "<td>" . $pcode . "</td>";
+echo "<th>Country</th>";
+echo "<td>" . $country . "</td>";
+echo "</tr>";
+echo "</table>";
+?>
+```
