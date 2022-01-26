@@ -69,3 +69,13 @@ pip install jupyterlab
 
 *Thanks to dash, you can post the graph to the websites.*
 
+# Django
+
+# 1. Pipenv
+
+*How do you install pipenv?*
+
+*Please refer to the documentation below:*
+https://pipenv.pypa.io/en/latest/
+
+# 2. 
