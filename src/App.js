@@ -30,6 +30,8 @@ import Home from './routes/Home';
 
   // back-end
 
+  // database
+  import Sql from './routes/database/Sql';
 
 const TeachIcon = styled(FontAwesomeIcon)`
 margin: 3px 12px;
@@ -119,7 +121,9 @@ function App() {
             <h2 className="bg-emerald-500 w-full p-3 text-xl text-center text-white	">Database </h2>
               <ul className="py-3 w-full">
                 <li className="p-1">
-                  <button className="h-10 w-full hover:bg-emerald-300">SQL</button>
+                  <Link to="sql">
+                    <button className="h-10 w-full hover:bg-emerald-300">SQL</button>
+                  </Link>
                 </li>
                 <li className="p-1">
                   <button className="h-10 w-full hover:bg-emerald-300">mySQL</button>
@@ -167,6 +171,7 @@ function App() {
                 <Route path="/javascript" element={<JavaScript />}/>
                 <Route path="/react" element={<ReactPage />}/>
                 <Route path="/typescript" element={<Typescript />}/>
+                <Route path="/sql" element={<Sql />}/>
               </ Routes>
         </div>
       </div> 

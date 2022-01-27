@@ -1206,7 +1206,7 @@ div.sticky {
 }
 ```
 
-# 22. The z-index Property
+# 22. The Z-index Property
 
 - The z-index property specifies the stack order of an element.
 - The higher number of z-index will show on top of all other elements.
@@ -1248,6 +1248,81 @@ div.sticky {
 </style>
 ```
 
+# 23. Overflow
+
+- The CSS overflow property controls what happens to content that is too big to fit into an area.
+
+*What for?*
+- The overflow property specifies whether to clip the content or to add scrollbars when the content of an element is too big to fit in the specified area.
+
+*The overflow property has the following values:*
+
+- visible - Default. The overflow is not clipped. The content renders outside the element's box
+```css
+div {
+  overflow: visible;
+}
+```
+- hidden - The overflow is clipped, and the rest of the content will be invisible
+```css
+div {
+  overflow: hidden;
+}
+```
+- scroll - The overflow is clipped, and a scrollbar is added to see the rest of the content
+```css
+div {
+  overflow: scroll;
+}
+```
+- auto - Similar to scroll, but it adds scrollbars only when necessary
+```css
+div {
+  overflow: auto;
+}
+```
+
+# 24. Float
+
+## a. Float
+
+- The CSS *float* property specifies how an element should float.
+- The CSS *clear* property specifies what elements can float beside the cleared element and on which side.
+
+- The float property is used for positioning and formatting content e.g. let an image float left to the text in a container.
+
+- The float property can have one of the following values:
+
+1. left - The element floats to the left of its container
+2. right - The element floats to the right of its container
+3. none - The element does not float (will be displayed just where it occurs in the text). This is default
+4. inherit - The element inherits the float value of its parent
+
+*Float is similar to the image wrap in the Microsoft Word.*
+
+## b. Clear
+
+- When we use the float property, and we want the next element below (not on right or left), we will have to use the clear property.
+
+- The clear property can have one of the following values:
+
+  - none - The element is not pushed below left or right floated elements. This is default
+  - left - The element is pushed below left floated elements
+  - right - The element is pushed below right floated elements
+  - both - The element is pushed below both left and right floated elements
+  - inherit - The element inherits the clear value from its parent
+
+```css
+div1 {
+  float: left;
+}
+
+div2 {
+  clear: left;
+}
+```
+
+# 25. 
 
 # Libraries
 
