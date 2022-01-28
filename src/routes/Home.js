@@ -56,6 +56,12 @@ const Home = () => {
         <Paragraph>Python</Paragraph>
         <Paragraph>Django</Paragraph>
         <Paragraph>ASP.net</Paragraph>
+
+        <Heading>Dev Toolkits</Heading>
+        <Paragraph>Regex</Paragraph>
+        <Paragraph><Link href="https://regex101.com/" target="_blank">Regex101</Link><Span>: A collection of most widely used Regex with test environment.</Span></Paragraph>
+        <Paragraph><Link href="https://www.regexpal.com/" target="_blank">Regexpal</Link><Span>: A regex test environment.</Span></Paragraph>
+
       </>
     );
 }
