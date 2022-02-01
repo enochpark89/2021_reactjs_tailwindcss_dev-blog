@@ -892,19 +892,33 @@ CASE
 END;
 ```
 
+# 33. Comments
 
-(Skipped Some)
+## a. Single Line Comments
 
+```sql
+-- Select all:
+SELECT * FROM Customers
+```
+
+## b. Multi-line Comments
+
+```sql
+/*Multi line comments
+comments
+comments
+*/
+```
 # SQL Database
 
-# 33. Create DB
+# 34. Create DB
 - The CREATE DATABASE statement is used to create a new SQL database.
 
 ```sql
 CREATE DATABASE databasename;
 ```
 
-# 34. Drop DB
+# 35. Drop DB
 - The DROP DATABASE statement is used to drop an existing SQL database.
 
 ```sql
@@ -912,7 +926,7 @@ DROP DATABASE testDB;
 
 ```
 
-# 35. Backup DB
+# 36. Backup DB
 
 - The BACKUP DATABASE statement is used in SQL Server to create a full back up of an existing SQL database.
 ```sql
@@ -928,7 +942,30 @@ WITH DIFFERENTIAL;
 ```
 - A differential back up only backs up the parts of the database that have changed since the last full database backup.
 
-# 36. CREATE TABLE
+# 37. Backup DB
+
+*How do you create a full backup of existing SQL database?*
+
+```sql
+BACKUP DATABASE databasename
+TO DISK = 'filepath';
+```
+
+- A differential back up only backs up the parts of the database that have changed since the last full database backup.
+*How do you back up only parts you need?*
+```sql
+BACKUP DATABASE databasename
+TO DISK = 'filepath'
+WITH DIFFERENTIAL;
+```
+
+*How do you back up to the file?*
+```sql
+BACKUP DATABASE testDB
+TO DISK = 'D:\backups\testDB.bak';
+```
+
+# 38. Create Table
 
 - The CREATE TABLE statement is used to create a new table in a database.
 
@@ -948,9 +985,14 @@ CREATE TABLE Persons (
     Address varchar(255),
     City varchar(255)
 );
+
+-- ex 2: Create a table using an existing table.
+CREATE TABLE TestTable AS
+SELECT customername, contactname
+FROM customers;
 ```
 
-# 37. DROP TABLE
+# 39. DROP TABLE
 
 - The DROP TABLE statement is used to drop an existing table in a database.
 
@@ -964,7 +1006,7 @@ DROP TABLE Shippers;
 TRUNCATE TABLE table_name;
 ```
 
-# 38. ALTER TABLE
+# 40. ALTER TABLE
 
 SQL ALTER TABLE Statement
 - The ALTER TABLE statement is used to add, delete, or modify columns in an existing table.
@@ -997,7 +1039,7 @@ ALTER TABLE Persons
 ALTER COLUMN DateOfBirth year;
 ```
 
-# 39. Constraints
+# 41. Constraints
 
 - Constraints can be specified when the table is created with the CREATE TABLE statement, or after the table is created with the ALTER TABLE statement.
 
@@ -1006,7 +1048,7 @@ ALTER COLUMN DateOfBirth year;
 *Data Validation*
 - Constraints are used to limit the type of data that can go into a table. This ensures the accuracy and reliability of the data in the table. If there is any violation between the constraint and the data action, the action is aborted.
 
-# 40. NOT NULL
+# 42. NOT NULL
 - The NOT NULL constraint enforces a column to NOT accept NULL values.
 
 ```sql

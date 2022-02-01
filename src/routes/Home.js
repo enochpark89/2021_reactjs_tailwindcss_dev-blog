@@ -54,6 +54,8 @@ const Home = () => {
         <Heading>Back-End</Heading>
         <Paragraph>Node.js: open-source backend with JavaScript</Paragraph>
         <Paragraph>Python</Paragraph>
+        <Paragraph>Flask</Paragraph>
+        <Paragraph><Link href="https://flask.palletsprojects.com/en/2.0.x/">Flask Documentation</Link></Paragraph>
         <Paragraph>Django</Paragraph>
         <Paragraph>ASP.net</Paragraph>
 

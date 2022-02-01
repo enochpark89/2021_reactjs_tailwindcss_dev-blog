@@ -29,6 +29,7 @@ import Home from './routes/Home';
   import Typescript from './routes/frontend/Typescript';
 
   // back-end
+  import Python from './routes/backend/Python';
 
   // database
   import Sql from './routes/database/Sql';
@@ -42,16 +43,6 @@ function App() {
   const file_name = 'reactjs.md';
   const [markdown, setMarkdown] = useState('');
 
-  useEffect(() => {
-    import(`./markdowns/${file_name}`)
-        .then(res => {
-            fetch(res.default)
-                .then(res => res.text())
-                .then(res => setMarkdown(res))
-                .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-  });
 
   return (
   <>
@@ -101,7 +92,9 @@ function App() {
             <h2 className="bg-emerald-500 w-full p-3 text-xl text-center text-white	">Back-end</h2>
               <ul className="py-3 w-full">
                 <li className="p-1">
-                  <button className="h-10 w-full hover:bg-emerald-300">Python</button>
+                  <Link to="python">
+                    <button className="h-10 w-full hover:bg-emerald-300">Python</button>
+                  </Link>
                 </li>
                 <li className="p-1">
                   <button className="h-10 w-full hover:bg-emerald-300">Ruby</button>
@@ -160,19 +153,22 @@ function App() {
           
         {/* Content Area */}
         <div className="p-5 basis-10/12 h-screen ">
-          {/* styling */}
-          {/* <div className='markdown-body'>
-            <ReactMarkdown children={markdown} remarkPlugins={[remarkGfm]} />
-          </div> */}
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/html" element={<Html />}/>
-                <Route path="/css" element={<Css />}/>
-                <Route path="/javascript" element={<JavaScript />}/>
-                <Route path="/react" element={<ReactPage />}/>
-                <Route path="/typescript" element={<Typescript />}/>
-                <Route path="/sql" element={<Sql />}/>
-              </ Routes>
+          <Routes>
+            {/* Front-end */}
+            <Route path="/" element={<Home />} />
+            <Route path="/html" element={<Html />}/>
+            <Route path="/css" element={<Css />}/>
+            <Route path="/javascript" element={<JavaScript />}/>
+            <Route path="/react" element={<ReactPage />}/>
+            <Route path="/typescript" element={<Typescript />}/>
+            
+            {/* Back-end */}
+            <Route path="/python" element={<Python />} />
+
+            {/* Database */}
+            <Route path="/sql" element={<Sql />}/>
+
+          </ Routes>
         </div>
       </div> 
     </div>

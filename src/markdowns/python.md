@@ -1,9 +1,12 @@
+### Table of Content
+
+- [Framework](#framework)
+    - [Django](#django)
+
 # Python
 
 - Top 3 popular language. 
-- Increased due to Data Science and Visualization. 
-
-# Key terms
+- Increased in demands due to Data Science and Visualization. 
 
 # Functions
 
@@ -70,6 +73,30 @@ pip install jupyterlab
 *Thanks to dash, you can post the graph to the websites.*
 
 # Django
+
+# Requirement
+
+1. Learn Python
+2. Learn CSS, HTML, JavaScript basics
+
+*What are the difference between the Flask and Django?*
+
+- Frameworks like Flask and Pyramid is for a minimal functional projects. 
+    *Benefits:*
+    - build server quickly.
+    - require re-invent the wheel. (bottom-top approach.)
+    *Drawback:*
+    - Takes a long time to create everything from a scratch.
+        - User Authentication
+        - Change Password
+        - Log in/Log out
+        - Create your own admin panel.
+
+*Is it possible to build Full-Stack with Django only?*
+
+- Yes. Using Django template, you can build both front and back end. 
+- However, when you need a strong user interactivity, you need ReactJS.
+
 
 # 1. Pipenv
 
