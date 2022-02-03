@@ -1,10 +1,11 @@
 ### Table of Contents
-1. [Introduction](#javascript)
-2. [Keywords](#keywords)
-3. [Advice](#advice)
-4. [DOM](#dom)
-5. [Ajax](#ajax)
-6. [JQuery](#jquery)
+- [Introduction](#javascript)
+- [Keywords](#keywords)
+- [Advice](#advice)
+- [Essentials](#essentials)
+- [DOM](#dom)
+- [Ajax](#ajax)
+- [JQuery](#jquery)
 
 # JavaScript
 *What is Javascript?*  

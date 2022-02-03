@@ -40,6 +40,7 @@ const Home = () => {
         <Link href="https://dev.to/" target="_blank">https://dev.to/</Link><Span>: DEV is a community of software developers getting together to help one another out.</Span>
 
         <Heading>Test Environment</Heading>
+        <Paragraph><Link href="https://replit.com/" target="_blank">Replit</Link><Span>: The collaborative browser based IDE</Span></Paragraph>
 
         <Heading>Front-End</Heading>
         <Paragraph>HTML</Paragraph>

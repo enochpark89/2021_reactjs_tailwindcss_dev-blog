@@ -59,6 +59,13 @@ function App() {
         {/* Body Section */}
         <div className="flex flex-row">
           <div className="flex flex-col w-100 items-center basis-2/12 h-screen bg-white ">
+            <ul className="py-3 w-full">
+              <li className="p-1">
+                <Link to="/">
+                  <button className="h-10 w-full hover:bg-emerald-300">Home</button>
+                </Link>
+              </li>
+            </ul>
             {/* Front-end */}
             <h2 className="bg-emerald-500 w-full p-3 text-xl text-center text-white	">Front-end</h2>
               <ul className="py-3 w-full">
@@ -154,8 +161,10 @@ function App() {
         {/* Content Area */}
         <div className="p-5 basis-10/12 h-screen ">
           <Routes>
-            {/* Front-end */}
+            {/* Home */}
             <Route path="/" element={<Home />} />
+
+            {/* Front-end */}
             <Route path="/html" element={<Html />}/>
             <Route path="/css" element={<Css />}/>
             <Route path="/javascript" element={<JavaScript />}/>

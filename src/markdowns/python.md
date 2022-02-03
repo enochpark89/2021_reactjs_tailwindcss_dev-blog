@@ -1,37 +1,136 @@
 ### Table of Content
 
+- [Introduction](#python)
+	- [Essentials](#essentials)
+- [Library](#library)
 - [Framework](#framework)
     - [Django](#django)
+    - [Flask](#flask)
 
 # Python
 
 - Top 3 popular language. 
 - Increased in demands due to Data Science and Visualization. 
+- You can write server-side scripts.
+- You can create a front-end and a back-end using framework such as Flask and Django.
 
-# Functions
+# Essentials
 
-1. Create virtual environment. 
-- In many cases, in the development environment, you have to create a virtual environment to test your code. 
-- use venv in python to create a virtual environment in the current directory. 
+*Python standard library:*
+https://docs.python.org/3/library/
+
+## 0. Print
+
+*How do you print output message?*
 ```py
-python -m venv .
-# create a virtual environment in a current directory.
+print("Hello world")
 ```
 
-2. Open jupyter notebook
+## 1. Variable
 
+*What is variable?*
+- variable is where we save data.
+
+*How do you declare a variable?*
 ```py
-# After installation,
-jupyter-notebook
+# You don't have to state the data type in python. Python will automatically recognize the data type.
+
+# string
+a = "string"
+
+# integer
+b = 3
+
+# boolean
+c = True
+d = False
+
+# float
+e = 3.23 
 ```
 
-3. 
+*How do I check the type of a variable?*
+```py
+# you can get the type by using type() function.
+type(variable)
+```
 
-# VSC extensions
+## 2. List
 
-1. Python interpreter.
+- Python has a sequence type called List and Tuples.
+- A list is a mutable sequence, which means you can change data inside a list.
 
-# Libraries
+*How do you create a list with data inside?*
+```py
+days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
+print(days)
+```
+
+*How do I get the a certain index of a list?*
+```py
+# Use list[] to get the index that you want.
+days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
+print(days[2])
+# Ooutput: Wed
+```
+*How do you add a value to a list?*
+```py
+days = ["Mon", "Tues", "Wed", "Thurs", "Fri"]
+days.append("Sat")
+print(days)
+# Output: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+```
+## 3. Tuples
+
+- Tuples are immutable sequences, which means you can't change the data inside. This uses a common sequence operation.
+
+*How do you create tuples?*
+```py
+days = ("Mon", "Tues", "Wed", "Thurs")
+```
+*Why do you need tuples?*
+- Sometimes, you do not want anybody to change the data or the sequence.
+
+## 4. Dict
+
+- Dictionary is like an object that holds different data types.
+
+*How do you create a Dict?*
+```py
+Dict = {
+    "name":"Enoch",
+    "age": 32,
+    "korean": True,
+    "fav_food": ["Sushi", "Kimchi"]
+}
+```
+## 5. Function
+
+- A function is capturing some behaviors or lines of code that you want to repeat over and over.
+- Python already has many functions built into it such as print(), len(), str() and type().
+
+## 6. Your Own Function
+
+*How do you create your own funciton?*
+```py
+def say_hello():
+    print("hello")
+
+# you can run as many as times as possible.
+say_hello()
+say_hello()
+say_hello()
+
+"""
+Output:
+hello
+hello
+hello
+"""
+```
+
+
+# Library
 
 1. Plotly:
     - build graphics of data.
@@ -64,15 +163,92 @@ pip install jupyterlab
 ```
 
 6. jupyterthemes
+1. Create virtual environment. 
+- In many cases, in the development environment, you have to create a virtual environment to test your code. 
+- use venv in python to create a virtual environment in the current directory. 
+```py
+python -m venv .
+# create a virtual environment in a current directory.
+```
 
-# Frameworks:
+2. Open jupyter notebook
+
+```py
+# After installation,
+jupyter-notebook
+```
+
+3. 
+
+# Library
+ 
 
 1. Dash: allows python to be a react application.
 2. Plotly: you make python code into a graphics.
 
 *Thanks to dash, you can post the graph to the websites.*
 
+# Framework:
+
 # Django
+
+# Flask
+
+## 0. Introduction
+*How you start a Flask project?*
+- Start a server
+- Create a route
+
+default.py
+```py
+from flask import Flask
+
+app = Flask("QuickProject")
+
+# Route to home
+@app.route("/")
+def home();
+    return "Hello! Welcome to the QuickProject"
+
+# Route to contact
+@app.route("/contact")
+def potato():
+    return "Contact"
+
+# Start a webserver
+app.run(host="0.0.0.0")
+```
+## 1. Dynamic URL
+
+*What is dynamic URL?*
+- An URL that changes.
+
+*How do you create a dynamic URL?*
+```py
+# Assume that default.py is imported
+
+# <> will accept a dynamic url.
+@app.route("/<username>")
+def potato(username):
+    return f"The username is{username}"
+
+# Output: The username is <whatever username that the user put on the URL>
+```
+# 3. Templates
+
+- Templates are to show user the page in a route.
+
+*How do you create a template for a route?*
+```py
+
+```
+
+## Projects List
+
+- JobScrapper: 
+
+
+##
 
 # Requirement
 
@@ -104,5 +280,3 @@ pip install jupyterlab
 
 *Please refer to the documentation below:*
 https://pipenv.pypa.io/en/latest/
-
-# 2. 

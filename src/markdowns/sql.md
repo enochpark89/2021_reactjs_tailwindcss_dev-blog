@@ -1206,3 +1206,88 @@ CREATE TABLE Persons (
     City varchar(255) DEFAULT 'Sandnes'
 );
 ```
+
+# 46. Index
+
+- The CREATE INDEX statement is used to create indexes in tables.
+
+- Index examples: 0, 1, 2, 3, 4 ......
+
+- Indexes are used to retrieve data from the database more quickly than otherwise. The users cannot see the indexes, they are just used to speed up searches/queries.
+
+*Create Index Syntax:*
+```sql
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+```
+ex 1: Create Index 
+
+```sql
+CREATE INDEX idx_lastname
+ON Persons (LastName);
+```
+*Create Index:*
+```sql
+CREATE INDEX idx_pname
+ON Persons (LastName, FirstName);
+```
+
+# 47. Auto Increment
+
+- Auto-increment allows a unique number to be generated automatically when a new record is inserted into a table.
+
+- Auto Increment CAN be used when you would like to increment the number of the primary key every new record added.
+
+
+ex 1: Create a new record to increment everytime.
+```sql
+-- Increment Personid primary key
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+```
+- MySQL uses the AUTO_INCREMENT keyword to perform an auto-increment feature.
+
+
+ex 2: Set the initial increment number
+```sql
+-- To let the AUTO_INCREMENT sequence start with another value, use the following SQL statement:
+ALTER TABLE Persons AUTO_INCREMENT=100;
+
+```
+
+SQL Server:
+```sql
+CREATE TABLE Persons (
+    Personid int IDENTITY(1,1) PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+```
+
+# 48. Dates
+
+*MySQL* comes with the following data types for storing a date or a date/time value in the database:
+
+- DATE - format YYYY-MM-DD
+- DATETIME - format: YYYY-MM-DD HH:MI:SS
+- TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+- YEAR - format YYYY or YY
+
+*SQL Server* comes with the following data types for storing a date or a date/time value in the database:
+
+- DATE - format YYYY-MM-DD
+- DATETIME - format: YYYY-MM-DD HH:MI:SS
+- SMALLDATETIME - format: YYYY-MM-DD HH:MI:SS
+- TIMESTAMP - format: a unique number
+
+ex: Specify a date
+```sql
+SELECT * FROM Orders WHERE OrderDate='2008-11-11'
+
+```

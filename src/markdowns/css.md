@@ -1322,7 +1322,417 @@ div2 {
 }
 ```
 
-# 25. 
+# 25. Inline-block
+- Compared to display: inline, the major difference is that display: inline-block allows to set a width and height on the element.
+- Other differences:
+  - the top and bottom margins/paddings are respected, but with display: inline they are not. 
+  - Also, it does not add a line-break after the element. 
+
+```css
+span.a {
+  display: inline; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;
+  background-color: yellow;
+}
+```
+*The main reason for using "display: inline-block" is to display list items horizontally instead of vertically.*
+
+ex: Create a navbar that displays horizontally.
+```css
+.nav {
+  background-color: yellow;
+  list-style-type: none;
+  text-align: center; 
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  display: inline-block;
+  font-size: 20px;
+  padding: 20px;
+}
+```
+
+# 26. Horizontal & Vertical Align
+
+
+## a. Center Align Elements
+*How do you horizontally center "div" tag?*
+```css
+/* 
+margin: auto - center a block element horizontally.
+- set the width so that it would not stretch too far.
+
+*/
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+```
+## b. Center Align Text
+
+*How do you center the text?*
+
+```css
+/* Use text-align */
+.center {
+  text-align: center;
+  border: 3px solid green;
+}
+```
+# 27. Combinators
+
+- CSS Selector can contain more than one selector. We can include a combinator.
+
+There are four different combinators in CSS:
+1. descendant selector (space)
+2. child selector (>)
+3. adjacent sibling selector (+)
+4. general sibling selector (~)
+
+ex 1: Descendant Selector
+
+```css
+/* select all <p> inside <div> elements */
+div p {
+  background-color: yellow;
+}
+```
+
+ex 2: Child Selector
+- The child selector selects all elements that are the children of a specified element.
+```css
+/* Select all <p> elements that are children of a <div> element */
+div > p {
+  background-color:yellow;
+}
+```
+
+```html
+<div>
+  <p>Paragraph 1 in the div.</p>
+  <p>Paragraph 2 in the div.</p>
+  <section>
+    <!-- not Child but Descendant -->
+    <p>Paragraph 3 in the div (inside a section element).</p>
+  </section>
+  <p>Paragraph 4 in the div.</p>
+</div>
+```
+
+ex 3: Adjacent Sibling Selector (+)
+- The adjacent sibling selector is used to select an element that is directly after another specific element.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div + p {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+
+<h2>Adjacent Sibling Selector</h2>
+
+<p>The + selector is used to select an element that is directly after another specific element.</p>
+<p>The following example selects the first p element that are placed immediately after div elements:</p>
+
+<div>
+  <p>Paragraph 1 in the div.</p>
+  <p>Paragraph 2 in the div.</p>
+</div>
+
+<!-- highlighted -->
+<p>Paragraph 3. After a div.</p>
+<p>Paragraph 4. After a div.</p>
+
+<div>
+  <p>Paragraph 5 in the div.</p>
+  <p>Paragraph 6 in the div.</p>
+</div>
+
+<!-- highlighted -->
+<p>Paragraph 7. After a div.</p>
+<p>Paragraph 8. After a div.</p>
+
+</body>
+</html>
+```
+
+ex 4: General Sibling Selector (~)
+- The general sibling selector selects all elements that are next siblings of a specified element.
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div ~ p {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+
+<h2>General Sibling Selector</h2>
+
+<p>The general sibling selector (~) selects all elements that are next siblings of a specified element.</p>
+
+<p>Paragraph 1.</p>
+
+<div>
+  <p>Paragraph 2.</p>
+</div>
+
+<!-- Paragraph 3 and Paragraph 4 highlighted -->
+<p>Paragraph 3.</p>
+<code>Some code.</code>
+<p>Paragraph 4.</p>
+
+</body>
+</html>
+```
+
+# 28. Pseudo-class
+
+*What are Pseudo-classes?*
+- A pseudo-class is used to define a special state of an element.
+
+*What can you do with pseudo-class?*
+- Style an element when a user mouses over it
+- Style visited and unvisited links differently
+- Style an element when it gets focus
+
+ex 1: Anchor Pseduo-classes
+```css
+/* unvisited link */
+a:link {
+  color: #FF0000;
+}
+
+/* visited link */
+a:visited {
+  color: #00FF00;
+}
+
+/* mouse over link */
+a:hover {
+  color: #FF00FF;
+}
+
+/* selected link */
+a:active {
+  color: #0000FF;
+}
+```
+
+ex 2: Pseudo-classes and HTML Classes
+```css
+a.highlight:hover {
+  color: #ff0000;
+}
+
+```
+
+ex 3: Hover over a <div> element to show a <p> element (like a tooltip)
+
+```css
+p {
+  display: none;
+  background-color: yellow;
+  padding: 20px;
+}
+
+div:hover p {
+  display: block;
+}
+```
+
+# 29. Pseudo-elements
+
+*What are Psedo-Elements?*
+- A CSS pseudo-element is used to style specified parts of an element.
+
+*The ::first-line Pseudo-element*
+```css
+p::first-line {
+  color: #ff0000;
+  font-variant: small-caps;
+}
+```
+
+# 30. Opacity / Transparency
+
+- The opacity property specifies the opacity/transparency of an element.
+
+ex 1: Transparent Image
+```css
+img {
+  opacity: 0.5;
+}
+```
+ex 2: Combination with hover
+```css
+img {
+  opacity: 0.5;
+}
+
+img:hover {
+  opacity: 1.0;
+}
+```
+
+ex 3: Transparency using RGBA
+```css
+div {
+  background: rgba(76, 175, 80, 0.3) /* Green background with 30% opacity */
+}
+```
+# 31. Navigation Bar
+
+- Having easy-to-use navigation is important for any web site.
+
+- A navigation bar is basically a list of links, so using the <ul> and <li> elements makes perfect sense:
+
+```html
+<ul>
+  <li><a href="default.asp">Home</a></li>
+  <li><a href="news.asp">News</a></li>
+  <li><a href="contact.asp">Contact</a></li>
+  <li><a href="about.asp">About</a></li>
+</ul>
+```
+## a. Vertical Navigation Bar
+
+- To build a vertical navigation bar, you can style the <a> elements inside the list, in addition to the code from the previous page:
+
+ex 1: Basic Frame
+```html
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li a {
+  display: block;
+  width: 60px;
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+```
+
+ex 2: Vertical Navigation
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2>Vertical Navigation Bar</h2>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
+
+</body>
+</html>
+```
+
+ex 3: Fixed Vertical Navbar
+
+```html
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  height: 100%; /* Full height */
+  position: fixed; /* Make it stick, even on scroll */
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+}
+```
+
+## b. Horizontal Navigation Bar
+
+- There are two ways to create a horizontal navigation bar. Using *inline* or *floating* list items.
+
+ex 1: Inline List Items
+```css
+li {
+  display: inline;
+}
+```
+
+ex 2: Floating LIst Items
+
+```css
+li {
+  float: left;
+}
+
+a {
+  display: block;
+  padding: 8px;
+  background-color: #dddddd;
+}
+```
+
+Explanation:
+- float: left; - Use float to get block elements to float next to each other
+- display: block; - Allows us to specify padding (and height, width, margins, etc. if you want)
+- padding: 8px; - Specify some padding between each `<a>` element, to make them look good
+- background-color: #dddddd; 
+- Add a gray background-color to each `<a>` element
+
+*There are variety of styles that you can apply to the Navbar*
+
+ex 3: Fixed Top/Bottom
+
 
 # Libraries
 
