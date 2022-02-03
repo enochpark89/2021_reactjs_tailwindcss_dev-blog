@@ -29,6 +29,13 @@ const Link = styled.a`
   color: #0070f3;
 `;
 
+const Ul = styled.ul`
+  list-style-type: inherit;
+  list-style-position: inside;
+
+`
+const Li = styled.li`
+`
 
 const Home = () => {
 
@@ -45,15 +52,17 @@ const Home = () => {
         <Heading>Front-End</Heading>
         <Paragraph>HTML</Paragraph>
         <Paragraph>CSS</Paragraph>
-        <Paragraph><Link href="https://fonts.google.com/" target="_blank">Google Fonts</Link><Span>: Access to 1000+ Google Fonts</Span></Paragraph>
-        <Paragraph><Link href="https://fontawesome.com/" target="_blank">Font Awesome</Link><Span>: Access to 1500+ Icons</Span></Paragraph>
-        <Paragraph><Link href="https://tailwindcss.com/" target="_blank">TailwindCSS</Link><Span>: A utility-first CSS framework</Span></Paragraph>
-        
+        <Ul>
+        <Li><Link href="https://fonts.google.com/" target="_blank">Google Fonts</Link><Span>: Access to 1000+ Google Fonts</Span></Li>
+        <Li><Link href="https://fontawesome.com/" target="_blank">Font Awesome</Link><Span>: Access to 1500+ Icons</Span></Li>
+        <Li><Link href="https://tailwindcss.com/" target="_blank">TailwindCSS</Link><Span>: A utility-first CSS framework</Span></Li>
+        </Ul>
         <Paragraph>JavaScript</Paragraph>
         <Paragraph>React</Paragraph>
         
         <Heading>Back-End</Heading>
         <Paragraph>Node.js: open-source backend with JavaScript</Paragraph>
+        <Paragraph><Link href="https://pugjs.org/api/getting-started.html">Pug</Link><Span>: Pug allows you to write inline JavaScript code in your templates. </Span></Paragraph>
         <Paragraph>Python</Paragraph>
         <Paragraph>Flask</Paragraph>
         <Paragraph><Link href="https://flask.palletsprojects.com/en/2.0.x/">Flask Documentation</Link></Paragraph>

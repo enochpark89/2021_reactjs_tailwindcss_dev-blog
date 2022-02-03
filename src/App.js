@@ -50,7 +50,7 @@ function App() {
       <div className="flex flex-col" >
         {/* Header Section */}
         <div className="py-3 pl-3 flex flex-row bg-white border-b-4 border-b-stone-800 text-2xl">
-          <h1>Welcome to EnoDev</h1>
+          <h1>EnoDev</h1>
           <TeachIcon icon={faDesktop} />  
           <h1>Tech Knowledge Archive</h1>
           <TeachIcon icon={faServer} />

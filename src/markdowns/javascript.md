@@ -1,7 +1,6 @@
 ### Table of Contents
 - [Introduction](#javascript)
 - [Keywords](#keywords)
-- [Advice](#advice)
 - [Essentials](#essentials)
 - [DOM](#dom)
 - [Ajax](#ajax)
@@ -12,8 +11,14 @@
 - JavaScript is originally designed for a browser. 
 - JavaScript can be used both front and backend. 
 - JavaScript - FrontEnd - the purpose of the JavaScript was originally to make the website interactive.
+
+*What can you do with JavaScript?*
+- JavaScript can modify HTML and CSS contents or styles to make the website dynamic and interactive.
 - There are many frameworks like ReactJs and VueJs that can save some time while designing the front-end of the web. 
 - There are many framworks for backend such as NodeJS, NestJS, and others. 
+
+*Why choose JavaScript?*
+- JavaScript is the world's most popular programming language, which means a big community of developers available to help each other.
 
 # keywords:
 
@@ -117,13 +122,79 @@ add(10)(20)(30);
 // This will printe Hello and whatever inside the username var.
 ```
 
-# Advice
-- Almost always, many JavaScript developers are experiencing same problems. If you search for the available function, it will most likely to be there. 
-- When you are making a eventHandler, try to change the class that lead to the change of style rather than modifying the style itself. 
-
-
-
 # Essentials
+
+## 1. Output
+
+- JavaScript can display data in different ways
+1. innerHTML: show on the HTML tag element.
+2. document.write(): show on the document.
+3. windows.alert(): show a window alert.
+4. console.log(): show on the consle tag on the browser or the command-line interface.
+
+## 2. Statement
+
+*Series of answered definition*
+- A computer progarm is a list of "instructions" to be "executed" by a computer.
+- These programming instructions are called statements.
+- JavaScript program is a list of programming statements.
+- In another word, a statement is a line of code.
+```js
+let x, y, z;    // Statement 1
+x = 5;          // Statement 2
+y = 6;          // Statement 3
+z = x + y;      // Statement 4
+```
+
+- **Semicolons** are necessary to close a statement.
+```js
+let a, b, c; 
+```
+
+- JavaScript ignores multiple spaces.
+- Code Block is included in between { and }.
+
+## 3. Syntax
+
+- There are two types of values called *Literals (fixed values)* and *Variables(variable values).*
+
+## a. Literals
+
+- Examples of literals:
+  1. Numbers
+  2. Strings
+
+## b. Variables
+
+- **Variables** are used to store data values. 
+- JavaScript uses the keywords var, let and const to declare variables.
+- An equal sign is used to assign values to variables. 
+```js
+let x;
+x = 6;
+```
+- JavaScript uses **arithmetic operators** ( + - * / ) to compute values:
+```js
+(5+6)*10
+```
+- JavaScript uses an **assignment operator** ( = ) to assign values to variables:
+```js
+let x,y;
+x= 5;
+y=6;
+```
+## c. Keywords
+- JavaScript keywords are used to identify actions to be performed.
+
+## d. Comments
+- JavaScript statements marked as comments DO NOT execute.
+
+## e. Camel Case
+- Typically JavaScript develpers use Camel Case to create a variable. 
+*What is a camel case?*
+ex) FirstName, LastName, MasterCard, InterCity.
+
+
 
 1. Array: list of data.
 ```js
