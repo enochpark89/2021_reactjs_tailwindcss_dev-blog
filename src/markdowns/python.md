@@ -194,7 +194,9 @@ jupyter-notebook
 
 # Flask
 
-## 0. Introduction
+# Introduction
+
+## 1. Quick Start
 *How you start a Flask project?*
 - Start a server
 - Create a route
@@ -218,6 +220,18 @@ def potato():
 # Start a webserver
 app.run(host="0.0.0.0")
 ```
+# Essentials
+
+## 0. Virtual Environment
+- You can use venv or virtualenv python library to create a virtual environment. 
+*Please refer to the document below for details:*
+https://flask.palletsprojects.com/en/2.0.x/installation/
+
+Steps:
+1. Install venv
+2. Activate venv
+3. Start on a project
+
 ## 1. Dynamic URL
 
 *What is dynamic URL?*
@@ -234,7 +248,7 @@ def potato(username):
 
 # Output: The username is <whatever username that the user put on the URL>
 ```
-# 3. Templates
+## 2. Templates
 
 - Templates are to show user the page in a route.
 
@@ -242,15 +256,31 @@ def potato(username):
 ```py
 
 ```
+## 3. Deploy in Heroku
+- You can deploy the Flask app with Heroku for a prototype view. 
+*Documentation:*
+https://devcenter.heroku.com/articles/getting-started-with-python
 
-## Projects List
+Steps:
+1. Activiate venv
+2. Install Libararies
+3. Install Heroku
+```bash
+npm install -g heroku
+```
+4. Create requirement.txt
+5. Install Gunicore (Must)
+*Without Gunicore, heroku won't display on the website.*
+6. Deploy using Heroku CLI
+
+## 1. Deploy in Heroku
+
+
+## 1. Job Scraper Project
 
 - JobScrapper: 
 
-
-##
-
-# Requirement
+# Essentials
 
 1. Learn Python
 2. Learn CSS, HTML, JavaScript basics

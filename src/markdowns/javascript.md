@@ -2,6 +2,7 @@
 - [Introduction](#javascript)
 - [Keywords](#keywords)
 - [Essentials](#essentials)
+- [Tips](#tips)
 - [DOM](#dom)
 - [Ajax](#ajax)
 - [JQuery](#jquery)
@@ -194,15 +195,294 @@ y=6;
 *What is a camel case?*
 ex) FirstName, LastName, MasterCard, InterCity.
 
+*JavaScript uses the Unicode character set.*
 
+## 4. Comments
 
-1. Array: list of data.
+*What are comments?*
+
+- Comments explain what JavaScript code does. Statements under comments are not executed.
+
 ```js
-daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+// Single-line comment
+/*
+Multi-line comments
+*/
 ```
-2. console.log(<variable>): display what is inside the given variable.
-3. console.dir(<variable>): display methods inside the given variable.
-== Key Concepts End ==
+
+## 5. Variables
+
+- There are 4 ways to declare a JavaScript Variable. 
+  1. var
+  2. let
+  3. const
+  4. nothing
+
+- For var and let, you can modify data.
+- For const, you CANNOT modify data.
+
+```js
+// var
+var x = 5;
+
+// let
+let x = 6;
+
+// const
+const price = 3;
+
+```
+- All JavaScript variables have unique names called identifier.
+- We use assignment operator(=) to assing values into varaibles.
+- A variable declared without a value will have the value `undefined`
+
+## 6. Let
+
+*What is let?*
+- The `let` was introduced in ES6.
+- It has a Block Scope.
+- Variables defined with let cannot be redeclared.
+- You can reassign the value variables declared with `let`.
+
+*What is the difference between let and var?*
+
+- The difference between let and var is that 
+
+1. let has more strict Block Scope than var.
+```js
+// The variable declared with var CAN be used outside the block, and the variable declared with let CANNOT be used outside a block.
+{
+  let x = 2;
+}
+// x can NOT be used here
+{
+  var x = 2;
+}
+// x CAN be used here
+```
+
+2. With var, you can re-declare variables. With let, you can NOT re-declare variables.
+```js
+var x = 10;
+// Here x is 10
+
+{
+var x = 2;
+// Here x is 2
+}
+
+// Here x is 2
+```
+
+## 7. Const
+
+- Const variables cannot be redeclared or reassigned. 
+- It has a Block Scope.
+- JavaScript const variables must be assigned a value when they are declared:
+
+*Const variable:*
+```js
+const PI = 3.141592653589793;
+PI = 3.14;      // This will give an error
+PI = PI + 10;   // This will also give an error
+```
+
+## a. Constant Arrays
+
+- Oddly, you can change the constant array.
+```js
+// You can create a constant array:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// You can change an element:
+cars[0] = "Toyota";
+
+// You can add an element:
+cars.push("Audi");
+```
+
+## b. Constant Objects
+- Oddly, You can also change the properties of a constant object:
+
+```js
+// You can create a const object:
+const car = {type:"Fiat", model:"500", color:"white"};
+
+// You can change a property:
+car.color = "red";
+
+// You can add a property:
+car.owner = "Johnson";
+```
+
+## 8. Operator
+- Using the operator, you can perform calculations such as addition, subtraction, division, and multiplications.
+- You can also concatenate strings.
+- When you add a string and a number, it will be like two string
+
+## 9. Arithmetics
+- +	Addition
+- -	Subtraction
+- *	Multiplication
+- **	Exponentiation (ES2016)
+- /	Division
+- %	Modulus (Remainder)
+- ++	Increment
+- --	Decrement
+
+## 10. Assignment Operator
+- = ; x = y
+- +=; x = x + y
+- -=; x = x - y
+- *=; x = x * y
+- /=; x = x / y
+- %=; x = x % y
+
+## 11. Data Types
+
+- All data has types.
+- JavaScript has dynamic types. This means that the same variable can be used to hold different data types:
+
+```js
+let x;           // Now x is undefined
+x = 5;           // Now x is a Number
+x = "John";      // Now x is a String
+```
+
+## a. String
+- A string (or a text string) is a series of characters like "John Doe".
+```js
+let carName1 = "Volvo XC60";   // Using double quotes
+```
+
+## b. Numbers
+
+- Numbers can be written with, or without decimals:
+```js
+let x1 = 34.00; // Written with decimals
+let x2 = 34; // Written without decimals
+```
+
+## c. Booleans
+- Booleans can only have two values: true or false.
+
+## d. Arrays
+- JavaScript arrays are written with square brackets.
+- Array items are separated by commas.
+```js
+const cars = ["Saab", "Volvo", "BMW"];
+```
+
+## e. Objects
+- JavaScript objects are written with curly braces {}.
+
+- Object properties are written as name:value pairs, separated by commas.
+```js
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+```
+
+## f. typeof Operator
+- You can use the JavaScript typeof operator to find the type of a JavaScript variable.
+
+```js
+typeof "John Doe"     // Returns "string"
+```
+
+## 12. Function
+- A JavaScript function is a block of code designed to perform a particular task.
+*What construct a function?*
+```js
+// function keyword
+// name of a function
+// paramters that can be received from users.
+function name(parameter1, parameter2, parameter3) {
+  // code to be executed.
+}
+```
+*What is the difference between a parameter and an argument?*
+- Function parameters are listed inside the parentheses () in the function definition.
+- Function arguments are the values received by the function when it is invoked.
+
+## 13. Object
+
+*What is object?*
+- An *object* has *properties* and *methods*.
+
+*What is the real-life examples?*
+- In real life, a car is an object.
+- A car has properties like weight and color, and methods like start and stop:
+- All cars have the same properties, but the property values differ from car to car.
+- All cars have the same methods, but the methods are performed at different times.
+
+- In an object, you can assign many names and values as below
+```js
+const car = {type:"Fiat", model:"500", color:"white"};
+```
+
+*How do you access object properties?*
+- You can access object properties in two ways.
+1. objectName.propertyName
+2. objectName["propertyName"]
+
+ex: Person Object
+```js
+const person = {
+  firstName: "John",
+  lastName : "Doe",
+  id       : 5566,
+  fullName : function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+```
+
+*What is **this** keyword?*
+In a function definition, this refers to the "owner" of the function.
+
+# 14. Events
+
+*What are events?*
+- HTML events are "things" that happen to HTML elements.
+- When JavaScript is used in HTML pages, JavaScript can "react" on these events.
+- You usually allows event handler attributes, with JavaScript code.
+```js
+// call an event handler directly.
+<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+```
+// call an event with a function.
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript HTML Events</h2>
+<p>Click the button to display the date.</p>
+
+<button onclick="displayDate()">The time is?</button>
+
+<script>
+function displayDate() {
+  document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
+<p id="demo"></p>
+
+</body>
+</html> 
+
+```
+
+
+# Tips
+
+## 1. Output
+- console.log(<variable>): display what is inside the given variable.
+- console.dir(<variable>): display methods inside the given variable.
+
+
 
 ## OOP - Object Oriented Programming.
 

@@ -53,16 +53,23 @@ const Home = () => {
         <Paragraph>HTML</Paragraph>
         <Paragraph>CSS</Paragraph>
         <Ul>
-        <Li><Link href="https://fonts.google.com/" target="_blank">Google Fonts</Link><Span>: Access to 1000+ Google Fonts</Span></Li>
-        <Li><Link href="https://fontawesome.com/" target="_blank">Font Awesome</Link><Span>: Access to 1500+ Icons</Span></Li>
-        <Li><Link href="https://tailwindcss.com/" target="_blank">TailwindCSS</Link><Span>: A utility-first CSS framework</Span></Li>
+          <Li><Link href="https://fonts.google.com/" target="_blank">Google Fonts</Link><Span>: Access to 1000+ Google Fonts</Span></Li>
+          <Li><Link href="https://fontawesome.com/" target="_blank">Font Awesome</Link><Span>: Access to 1500+ Icons</Span></Li>
+          <Li><Link href="https://tailwindcss.com/" target="_blank">TailwindCSS</Link><Span>: A utility-first CSS framework</Span></Li>
+          <Li><Link href="https://bulma.io/" target="_blank">Bulma</Link><Span>: A ready-to-use frontend components that you can easily combine to build responsive web interfaces.</Span></Li>
+          <Li><Link href="https://html-css-js.com/css/generator/box-shadow/" target="_blank">Box-shadow Generator</Link><Span>: Also offers many cheatsheets for HTML/CSS/JavaScript</Span></Li>
+          Box-shadow website:
+
+
         </Ul>
         <Paragraph>JavaScript</Paragraph>
         <Paragraph>React</Paragraph>
         
         <Heading>Back-End</Heading>
         <Paragraph>Node.js: open-source backend with JavaScript</Paragraph>
-        <Paragraph><Link href="https://pugjs.org/api/getting-started.html">Pug</Link><Span>: Pug allows you to write inline JavaScript code in your templates. </Span></Paragraph>
+        <Ul>
+          <Li><Link href="https://pugjs.org/api/getting-started.html">Pug</Link><Span>: Pug allows you to write inline JavaScript code in your templates. </Span></Li>
+        </Ul>
         <Paragraph>Python</Paragraph>
         <Paragraph>Flask</Paragraph>
         <Paragraph><Link href="https://flask.palletsprojects.com/en/2.0.x/">Flask Documentation</Link></Paragraph>

@@ -66,12 +66,13 @@ function App() {
                 </Link>
               </li>
             </ul>
+
             {/* Front-end */}
             <h2 className="bg-emerald-500 w-full p-3 text-xl text-center text-white	">Front-end</h2>
               <ul className="py-3 w-full">
                 <li className="p-1">
                   <Link to="html">
-                    <button className="h-10 w-full hover:bg-emerald-300">HTML</button>
+                    <button className="h-10 w-full hover:bg-emerald-300 ">HTML</button>
                   </Link> 
                 </li>
                 <li className="p-1">
