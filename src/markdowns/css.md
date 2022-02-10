@@ -1733,6 +1733,242 @@ Explanation:
 
 ex 3: Fixed Top/Bottom
 
+# 32. Dropdowns
+
+- You can create a hoverable dropdown with CSS
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<h2>Hoverable Dropdown</h2>
+<p>Move the mouse over the text below to open the dropdown content.</p>
+
+<div class="dropdown">
+  <span>Mouse over me</span>
+  <div class="dropdown-content">
+  <p>Hello World!</p>
+  </div>
+</div>
+
+</body>
+</html>
+```
+
+- Generally, 
+- you create a drop-downcontent and set it to display none. 
+- When the mouse is hovered to the dropdown button, change the display to block. Then, the dropdown menus will appear. 
+- meanwhile, you can set the position, background-color, min-width, box-shadow, and z-index.
+
+# 33. Image Gallery
+
+- You can create an image gallery with CSS.
+
+```html
+<html>
+<head>
+<style>
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <a target="_blank" href="img_5terre.jpg">
+    <img src="img_5terre.jpg" alt="Cinque Terre" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_forest.jpg">
+    <img src="img_forest.jpg" alt="Forest" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_lights.jpg">
+    <img src="img_lights.jpg" alt="Northern Lights" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+<div class="gallery">
+  <a target="_blank" href="img_mountains.jpg">
+    <img src="img_mountains.jpg" alt="Mountains" width="600" height="400">
+  </a>
+  <div class="desc">Add a description of the image here</div>
+</div>
+
+</body>
+</html>
+```
+
+# 34. Image Sprites
+- An image sprite is a collection of images put into a single image.
+- A web page with many images can take a long time to load and generates multiple server requests.
+- Using image sprites will reduce the number of server requests and save bandwidth.
+
+# 35. Attribute Selector
+- It is possible to style HTML elements that have specific attributes or attribute values.
+
+## a. [attribute] Selector
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a[target] {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+<!-- a[target] will select anchor with target attribute -->
+<h2>CSS [attribute] Selector</h2>
+<p>The links with a target attribute gets a yellow background:</p>
+
+<a href="https://www.w3schools.com">w3schools.com</a>
+<a href="http://www.disney.com" target="_blank">disney.com</a>
+<a href="http://www.wikipedia.org" target="_top">wikipedia.org</a>
+
+</body>
+</html>
+```
+
+## b. [attribute="value"] selector (Specific attribute value)
+
+- The [attribute="value"] selector is used to select elements with a **specified attribute** and value.
+
+```css
+a[target="_blank"] {
+  background-color: yellow;
+}
+```
+
+## c. [attribute~="value"] selector (contain)
+
+- The [attribute~="value"] selector is used to select elements with an attribute value **containing a specified word**.
+
+```css
+[title~="flower"] {
+  border: 5px solid yellow;
+}
+```
+## d. [attribute|="value"] selector (Exact)
+
+- The [attribute|="value"] selector is used to select elements with the specified attribute, whose value can be exactly the specified value, or the specified value followed by a hyphen (-).
+
+```css
+[class|="top"] {
+  background: yellow;
+}
+```
+
+## e. CSS [attribute^="value"] Selector (Starts with)
+- The [attribute^="value"] selector is used to select elements with the specified attribute, whose value starts with the specified value.
+```css
+/* Select the class that has "top" */
+[class^="top"] {
+  background: yellow;
+}
+```
+
+## f. CSS [attribute$="value"] Selector (Ends with)
+- The [attribute$="value"] selector is used to select elements whose attribute value ends with a specified value.
+
+```css
+[class$="test"] {
+  background: yellow;
+}
+```
+# 36. Forms
+
+- The look of an HTML form can be greatly improved with CSS:
+
+## a. Width change
+- Use the width property to determine the width of the input field:
+
+```css
+input {
+  width: 100%;
+}
+```
+## b. Padded Inputs
+- Tip: When you have many inputs after each other, you might also want to add some margin, to add more space outside of them:
+
+```css
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+```
+## c. Bordered Inputs
+
+```css
+input[type=text] {
+  border: 2px solid red;
+  border-radius: 4px;
+}
+```
+
+## d. Underline Inputs
+
+```css
+input[type=text] {
+  border: none;
+  border-bottom: 2px solid red;
+}
+```
+- There are many ways to create your own form. You can learn by copying what others have made.
+
+# 37. Counters
+
+- 
 
 # Libraries
 

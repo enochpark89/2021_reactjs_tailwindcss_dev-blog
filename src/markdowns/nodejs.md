@@ -246,6 +246,129 @@ const logger = morgan("dev");
 app.use(logger);
 ```
 
-- Morgan also has next in the source code. It is just a composition of code or a library that someone wrote using express for convenience.
+- Morgan also has *next* in the source code. It is just a composition of code or a library that someone wrote using express for convenience.
 
+# 5. Routers
+
+- Routers allow you to organize controllers and URL easier way.
+- You can create a router map so that you would plan ahead of time what you need. 
+
+What sort of data will be needed?
+
+*How do you create your router?*
+
+- For the sake of convenience, it is better to make your URL shorter like `/video` or `/user`.
+
+- You can create a globalRouter as below:
+```js
+const globalRouter = express.Router();
+
+const userRouter = expresss.Router();
+
+const assetRouter = express.Router();
+```
+
+- Order diagram 
+1. Express App calls a router
+2. Router calls the function
+3. Function displays a template
+
+*How do you use your router?*
+```js
+// global router section
+const globalRouter = express.Router();
+const handleHome = (req, res) => res.send("Home");
+globalRouter.get("/", handleHome);
+
+// userRouter
+const userRouter = express.Router();
+const handleEditUser = (req, res) => res.send("Edit User");
+userRouter.get("/edit", handleEditUser);
+
+// videoRouter
+const videoRouter = express.Router();
+const handleWatchVideo = (req, res) => res.send("Watch Video");
+videoRouter.get("/watch", handleWatchVideo);
+
+// app will call Routers.
+app.use("/", globalRouter);
+app.use("/videos", videoRouter);
+app.use("/users", userRouter);
+```
+
+# 6. Clean Code
+
+- When you work on the code, you become creative and tend to be very dirty.
+- 'Clean Code' book will explain that you first write the code and use the same amount of time to clean out your code.
+- You want to divide and conquer as you work on the program.
+
+Recommendations:
+- Create a seperate folder for each router.
+
+Map:
+src/routers/globalRouter.js
+```js
+// each router should have the router and the handler. Then, export the Router so that it can be used in other .js file.
+
+import express from "express";
+
+const globalRouter = express.Router();
+
+const handleHome = (req, res) => res.send("Home");
+
+globalRouter.get("/", handleHome);
+
+export default globalRouter;
+```
+
+- Since you delegated or separated the routers
+
+Your server.js becomes simpler.
+
+```js
+import express from "express";
+import morgan from "morgan";
+import globalRouter from "./routers/globalRouter";
+import assetRouter from "./routers/videoRouter";
+import userRouter from "./routers/userRouter";
+
+const PORT = 4000;
+const app = express();
+
+// Use Morgan middleware 
+const logger = morgan("dev");
+app.use(logger);
+
+// Use routers
+app.use("/", globalRouter);
+app.use("/assets", assetRouter);
+app.use("/users", userRouter);
+
+// server listening on port 4000 with console message
+const handleListening = () =>
+  console.log(`✅ Server listenting on port http://localhost:${PORT} 🚀`);
+app.listen(PORT, handleListening);
+```
+
+- Also, you can seperate the Router into a controller where it handles the route and display data.
+- *It is not good to mix routers with controllers.*
+- We do not need a global controller. 
+
+*How you export a function?*
+
+- You can either export using export const which export one line at a time or you can use export default which export only one component.
+
+*Tip: always test your code after you have modified a part of a code.*
+
+
+# Q&A
+
+*What if NodeJs doesn't read the exported component?*
+
+- Add below to the package.json
+```js
+  "scripts": {
+    "dev": "nodemon --experimental-modules --es-module-specifier-resolution=node src/server.js"
+  },
+```
 

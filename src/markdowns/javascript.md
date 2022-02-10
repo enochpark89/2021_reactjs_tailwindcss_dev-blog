@@ -474,6 +474,105 @@ function displayDate() {
 </html> 
 
 ```
+# 15. String
+
+- A JavaScript string is zero or more characters written inside quotes.
+```js
+let text = "John Doe";
+```
+
+## a. String length
+
+- To find the length of a string, use the built-in length property:
+```js
+let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let length = text.length;
+```
+
+## b. Escape Character
+- \'	Single quote(')
+- \"	Double quote(")
+- \\	Backslash('\')
+
+# 16. String Methods
+
+- Developers work with string so many times. Strin methods help us to work with strings.
+
+## a. Array.length
+
+- The length property returns the length of a string:
+```js
+let txt = "ABCD";
+let length = txt.length;
+// output for lenth: 4
+```
+
+## b. String extractions
+
+- There are 3 ways to extract string:
+  1. slice(start, end)
+  2. substring(start, end)
+  3. substr(start, length)
+
+### 1. slice()
+
+- You can use slice() to put the index that you want to slice from a string.
+```js
+let str = "Apple, Banana, Kiwi";
+console.log(str.slice(7,13));
+// Output: Banana 
+```
+
+- You can use a negetive index withint slice().
+```js
+let str = "Apple, Banana, Kiwi";
+console.log(str.slice(-12, -6));
+// Output: Banana
+```
+
+### 2. substring()
+
+- substring() is similar to slice().
+
+*What is the difference between .substring() and .slice()*
+- The difference is that substring() cannot accept negative indexes.
+
+```js
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(7, 13);
+console.log(part);
+// Output: Banana
+```
+
+### 3. substr()
+
+- With substr(), you can put the start index and the length that you want to include.
+
+```js
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7, 6);
+console.log(part);
+// Output: Banana
+```
+
+### 4. .replace()
+
+- The replace() method replaces a specified value with another value in a string:
+```js
+let text = "Please visit Microsoft!";
+let newText = text.replace("Microsoft", "W3Schools");
+```
+
+*How to replace only the first match?*
+- By default, the replace() method replaces only the first match:
+```js
+let text = "Please visit Microsoft and Microsoft!";
+let newText = text.replace("Microsoft", "W3Schools");
+console.log(newText);
+// Output: Please visit W3Schools and Microsoft!
+```
+
+
 
 
 # Tips

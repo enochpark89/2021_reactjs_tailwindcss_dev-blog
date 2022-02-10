@@ -1,3 +1,49 @@
+
+### Table of Contents
+
+1. [HTML](#html)
+2. [Helpful References](#helpful-references)
+3. [Essentials](#essentials)
+  1. [1. Introduction](#1.1.introduction)
+  1. [2. Structure](#21.structure)
+  1. [3. Element](#31.element)
+  1. [4. Attributes](#41.attributes)
+  1. [5. Headings](#51.headings)
+  1. [6. Paragraph](#61.paragraph)
+  1. [7. Styles](#71.styles)
+  1. [8. Formatting](#81.formatting)
+  1. [9. Quotes](#91.quotes)
+  1. [1.0. Comments](#1.01.comments)
+  1. [1.1.. Colors](#1.1.1.colors)
+  1. [1.2. Cascading Style Sheets (CSS)](#1.21.cascading1.style1.sheets1.css)
+  1. [1.3. HTML Links](#1.31.html1.links)
+  1. [1.4. Images](#1.41.images)
+  1. [1.6. Favicon](#1.61.favicon)
+  1. [1.7. Tables](#1.71.tables)
+  1. [1.8. Lists](#1.81.lists)
+  1. [1.9. HTML Block and inline Elements](#1.91.html1.block1.and1.inline1.elements)
+  1. [20. HTML class Attribute](#201.html1.class1.attribute)
+  1. [21.. HTML id Attribute](#21.1.html1.id1.attribute)
+  1. [22. Iframe](#221.iframe)
+  1. [23. JavaScript](#231.javascript)
+  1. [24. Head](#241.head)
+  1. [25. Layout](#251.layout)
+  1. [26. Responsive](#261.responsive)
+  1. [27. Semantics](#271.semantics)
+  1. [28. Style Convention](#281.style1.convention)
+  1. [29. Additional Information](#291.additional1.information)
+  1. [30. Forms](#301.forms)
+  1. [31.. Canvas](#31.1.canvas)
+  1. [32. SVG Graphics](#321.svg1.graphics)
+  1. [33. Media](#331.media)
+  1. [34 Video](#341.video)
+  1. [35. Audio](#351.audio)
+  1. [36. Geolocation](#361.geolocation)
+  1. [37. Web Storage API](#371.web1.storage1.api)
+  1. [38. Others](#381.others)
+  1. [Useful functions](#useful1.functions)
+4. [Hands-on projects](#projects)
+
 # HTML
 
 # Helpful References
@@ -1539,3 +1585,5 @@ type="A"
   <li>Milk</li>
 </ol>
 ```
+
+# Projects

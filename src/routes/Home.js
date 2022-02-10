@@ -47,7 +47,17 @@ const Home = () => {
         <Link href="https://dev.to/" target="_blank">https://dev.to/</Link><Span>: DEV is a community of software developers getting together to help one another out.</Span>
 
         <Heading>Test Environment</Heading>
-        <Paragraph><Link href="https://replit.com/" target="_blank">Replit</Link><Span>: The collaborative browser based IDE</Span></Paragraph>
+        <Ul>
+          <Li>
+            <Link href="https://replit.com/" target="_blank">Replit</Link><Span>: The collaborative browser based IDE.</Span>
+          </Li>
+          <Li>
+            <Link href="https://codesandbox.io/" target="_blank">Code Sandbox</Link><Span>: Collaborative sandboxes for rapid web development.</Span>
+          </Li>
+          <Li>
+            <Link href="https://codepen.io/" target="_blank">Codepen</Link><Span>: a social development environment for front-end designers and developers.</Span>
+          </Li>
+        </Ul>
 
         <Heading>Front-End</Heading>
         <Paragraph>HTML</Paragraph>
