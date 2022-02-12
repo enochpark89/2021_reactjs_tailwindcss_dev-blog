@@ -8,6 +8,7 @@
 - [JQuery](#jquery)
 
 # JavaScript
+
 *What is Javascript?*  
 - JavaScript is originally designed for a browser. 
 - JavaScript can be used both front and backend. 
@@ -572,8 +573,558 @@ console.log(newText);
 // Output: Please visit W3Schools and Microsoft!
 ```
 
+# 16. String Search
 
+- Available Search Methods:
+  - String indexOf()
+  - String lastIndexOf()
+  - String startsWith()
+  - String endsWith()
 
+## a. indexOf()
+
+- The indexOf() method returns the index of (the position of) the first occurrence of a specified text in a string:
+```js
+let str = "Please locate where 'locate' occurs!";
+console.log(str.indexOf("locate"));
+// Output: 7 (because the word locate starts on the index of 7)
+```
+
+## b. lastIndexOf()
+
+- The lastIndexOf() method returns the index of the last occurrence of a specified text in a string:
+```js
+let str = "Please locate where 'locate' occurs!";
+console.log(str.lastIndexOf("locate"));
+// the last occurance of a specified text starts in an index of 21.
+```
+
+## c. search()
+
+- The search() method searches a string for a specified value and returns the position of the match:
+
+```js
+let str = "Please locate where 'locate' occurs!";
+str.search("locate");
+// Output: 7
+```
+
+*Is indexOf() and search() equal?*
+
+- The main difference is that indexOf() method cannot take powerful search values (regex).
+
+## d. match()
+
+- The match() method searches a string for a match against a regular expression, and returns the matches, as an Array object.
+
+```js
+// regex indicates that you want to search a string for "ain"
+let text = "The rain in SPAIN stays mainly in the plain";
+text.match(/ain/g);
+// Output:ain,ain,ain 
+```
+
+## e. include()
+
+- The includes() method returns true if a string contains a specified value.
+```js
+// returns true because it include a word "world"
+let text = "Hello world, welcome to the universe.";
+text.includes("world");
+```
+
+## f. startsWith()
+
+- The startsWith() method returns true if a string begins with a specified value, otherwise false:
+
+```js
+// if the string text starts with "Hello," it will return true
+let text = "Hello world, welcome to the universe.";
+text.startsWith("Hello");
+// returns true.
+```
+## g. endsWith()
+
+- The endsWith() method returns true if a string ends with a specified value, otherwise false:
+```js
+// Check if a string ends with "Doe":
+var text = "John Doe";
+text.endsWith("Doe");
+```
+
+# 17. String Templates
+
+- The words that refer to String Templates are synonymous as below.
+  - Template Literals
+  - Template Strings
+  - String Templates
+  - Back-Tics Syntax
+
+## a. Back-Tics Syntax
+
+- Template Literals use back-ticks (``) rather than the quotes ("") to define a string:
+```js
+// You can use back-tics to create a string variable.
+let text = `Hello World!`;
+```
+
+## b. Quotes Inside Strings
+- With template literals, you can use both single and double quotes inside a string:
+```js
+let text = `He's often called "Johnny"`;
+console.log(text);
+// Output: He's often called "Johnny"
+```
+
+## c. Multiline Strings
+- Template literals allows multiline strings:
+```js
+let text =
+`The quick
+brown fox
+jumps over
+the lazy dog`;
+```
+
+## d. Interpolation
+- Template literals provide an easy way to interpolate variables and expressions into strings.
+
+ex 1: Variable Substitutions
+```js
+let firstName = "John";
+let lastName = "Doe";
+let text = `Welcome ${firstName}, ${lastName}!`;
+```
+
+ex 2: Expression Substitution
+- You can also substitute for an expression that uses series of variables.
+```js
+let price = 10;
+let VAT = 0.25;
+
+let total = `Total: ${(price * (1 + VAT)).toFixed(2)}`;
+```
+
+## e. HTML Templates
+
+- You can create an HTML template with the back-tic, but this way is not recommended.
+```js
+let header = "Templates Literals";
+let tags = ["template literals", "javascript", "es6"];
+
+let html = `<h2>${header}</h2><ul>`;
+for (const x of tags) {
+  html += `<li>${x}</li>`;
+}
+
+html += `</ul>`;
+```
+
+# 18. Numbers
+- JavaScript has only one type of number. Numbers can be written with or without decimals.
+```js
+let x = 3.14;    // A number with decimals
+let y = 3;       // A number without decimals
+```
+
+## a. 64-bit Floating Point
+- Unlike many other programming languages, JavaScript does not define different types of numbers, like integers, short, long, floating-point etc.
+- JavaScript numbers are always stored as **double precision** floating point numbers, following the international IEEE 754 standard.
+- This format stores numbers in 64 bits, where the number (the fraction) is stored in bits 0 to 51, the exponent in bits 52 to 62, and the sign in bit 63:
+
+## b. Integer Precision
+- Integers (numbers without a period or exponent notation) are accurate up to 15 digits.
+
+```js
+let x = 999999999999999;   // x will be 999999999999999
+let y = 9999999999999999;  // y will be 10000000000000000
+```
+
+## c. Floating Precision
+
+- To solve the problem above, it helps to multiply and divide:
+
+```js
+let x = (0.2 * 10 + 0.1 * 10) / 10;
+```
+
+## d. Adding Numbers and Strings
+- If you add two numbers, the result will be a number:
+```js
+let x = 10;
+let y = 20;
+let z = x + y;
+```
+
+## e. Nan - Not a Number
+
+- NaN is a JavaScript reserved word indicating that a number is not a legal number.
+
+- If you try to do arithemetic with a non numeric string, it will result in NaN.
+
+## f. JavaScript Numbers as Object
+
+- Numbers can be defined as object as below:
+```js
+let x = 123;
+let y = new Number(123);
+```
+
+# 19. Numbers methods
+
+- Number methods help you work with numbers.
+
+## a. toString()
+- toString() converts Numbers into Strings.
+```js
+let x = 123;
+x.toString();
+console.log(typeof x);
+// output: String
+```
+## b. toExponential()
+- toExponential() returns a string, with a number rounded and written using exponential notation.
+```js
+let x = 9.656;
+x.toExponential(2);
+```
+## c. toFixed()
+- toFixed() returns a string, with the number written with a specified number of decimals:
+```js
+let x = 9.656;
+console.log(x.toPrecision(2));
+console.log(x.toPrecision(4));
+console.log(x.toPrecision(6));
+/*
+Output:
+9.7
+3 9.656
+4 9.65600
+*/
+```
+
+## d. valueOf()
+
+- valueOf() returns a number as a number.
+```js
+let x = 123;
+x.valueOf();
+```
+
+## e. parseInt()
+
+- parseInt() parses a string and returns a whole number. Spaces are allowed. Only the first number is returned:
+
+```js
+parseInt("10"); // returns 10
+parseInt("10.33"); // returns 10
+```
+## f. parseFloat()
+- parseFloat() parses a string and returns a number. Spaces are allowed. Only the first number is returned:
+```js
+parseFloat("10"); // output: 10
+parseFloat("10.33"); // output: 10.33
+```
+## g. other Number Properties
+
+Number Properties
+
+- MAX_VALUE:	Returns the largest number possible in JavaScript
+- MIN_VALUE:	Returns the smallest number possible in JavaScript
+- POSITIVE_INFINITY:	Represents infinity (returned on overflow)
+- NEGATIVE_INFINITY:	Represents negative infinity (returned on overflow)
+- NaN:	Represents a "Not-a-Number" value
+
+# 20. Arrays
+*What are arrays?*
+- An array is a special variable, which can hold more than one value:
+
+- An array can hold many values under a single name, and you can access the values by referring to an index number.
+
+```js
+const cars = ["Saab", "Volvo", "BMW"];
+console.log(cars[0]);
+console.log(cars[1]);
+console.log(cars[2]);
+/*
+Saab
+Volvo
+BMW
+*/
+```
+
+# 21. Array Method
+
+- Array comes with a package of methods that can be used to help developers.
+
+## a. toString()
+
+- The JavaScript method toString() converts an array to a string of (comma separated) array values.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.toString());
+// Banana,Orange,Apple,Mango
+```
+
+## b. join()
+
+- The join() method also joins all array elements into a string.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.join(" * "));
+// Banana * Orange * Apple * Mango
+```
+
+## c. pop() and push()
+
+1. pop()
+- The pop() method removes the last element from an array:
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop();
+console.log(fruits);
+// Output: (3) ['Banana', 'Orange', 'Apple']
+```
+- if assigned to the variable, it will return a value that was popped out.
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits.pop();
+console.log(fruit);
+// Output: Mongo
+```
+2. push()
+- The push() method adds a new element to an array (at the end):
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");
+console.log(fruits);
+// (5) ['Banana', 'Orange', 'Apple', 'Mango', 'Kiwi']
+```
+- The push() method returns the new array length:
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let length = fruits.push("Kiwi");
+// Output: 5
+```
+
+## d. shift() or unshift()
+
+1. shift()
+- The shift() method removes the first array element and "shifts" all other elements to a lower index.
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.unshift("Lemon");
+console.log(fruits);
+// Output: (5) ['Lemon', 'Banana', 'Orange', 'Apple', 'Mango']
+```
+
+- The shift() method returns the value that was "shifted out":
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fruit = fruits.shift();
+console.log(fruit);
+// Output: Banana
+```
+
+2. unshift()
+
+- The unshift() method adds a new element to an array (at the beginning), and "unshifts" older elements:
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.unshift("Lemon");
+console.log(fruits);
+// output: (5) ['Lemon', 'Banana', 'Orange', 'Apple', 'Mango']
+```
+- The unshift() method returns the new array length.
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.unshift("Lemon"));
+// Output: 5
+```
+
+## e. Change Elements
+
+1. Change with accessing index.
+- Array elements are accessed using their index number:
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits[0] = "Kiwi";
+```
+
+2. Delete by delete()
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+delete fruits[0];
+```
+*delete() is not recommended as it leaves undefined holes in an array.*
+
+3. Merging Arrays with concat()
+
+- The concat() method creates a new array by merging (concatenating) existing arrays:
+```js
+const myGirls = ["Cecilie", "Lone"];
+const myBoys = ["Emil", "Tobias", "Linus"];
+const myChildren = myGirls.concat(myBoys);
+console.log(myChildren);
+
+// output: (5) ['Cecilie', 'Lone', 'Emil', 'Tobias', 'Linus']
+```
+
+4. Array splice with splice()
+
+**Splice Insersion**
+- The splice() method can be used to add new items to an array:
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+/* 
+(2): where new elements should be added. 
+(0): defines how many elements should be removed.
+("Lemon", "Kiwi"): new elements that are being added.
+*/ 
+```
+
+*What does splice() method returns?*
+- The splice() method returns an array with the deleted items:
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// two deleted elements are returned.
+console.log(fruits.splice(2, 2, "Lemon", "Kiwi"));
+// Output: (2) ['Apple', 'Mango']
+
+```
+
+**Splice Deletion**
+- With clever parameter setting, you can use splice() to remove elements *without leaving "holes"* in the array:
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(0, 1);
+console.log(fruits);
+// Output: (3) ['Orange', 'Apple', 'Mango']
+```
+5. Array slice with slice()
+
+- The slice() method slices out a piece of an array into a new array.
+
+```js
+const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+// After slice, it will return the remaining array. IT WILL NOT MODIFY THE ORIGINAL ARRAY.
+const citrus = fruits.slice(1);
+console.log(citrus);
+console.log(fruits);
+```
+# 22. Array Sort
+
+## a. Sort an array alphabetically - sort()
+
+- The sort() method sorts an array alphabetically:
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.sort();
+console.log(fruits);
+// Output: (4) ['Apple', 'Banana', 'Mango', 'Orange']
+```
+
+## b. Sort an array in reverse order - reverse()
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// After sorting the array alphabetically and then, reverse the order.
+fruits.sort();
+fruits.reverse();
+```
+
+## c. Numeric Sort
+
+- By default, the sort() function sort values as string.
+
+*How do you sort a number array?*
+- You can use below trick to sort numbers in an ascending order.
+```js
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a - b});
+```
+
+*How do you sort a number array in a reverse order?*
+- Use the same trick to sort an array descending:
+```js
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return b - a});
+```
+
+*What is the name of the trick that you used?*
+
+- The name is called "The Compare Function".
+```js
+function(a, b){return a - b}
+```
+
+*How do you find the maximum or minimum value within an array?*
+
+```js
+// Find a maximum value.
+function myArrayMax(arr) {
+  return Math.max.apply(null, arr);
+}
+// Math.max.apply(null, [1, 2, 3]) is equivalent to Math.max(1, 2, 3).
+
+// Find a mimium value
+
+function myArrayMin(arr) {
+  return Math.min.apply(null, arr);
+}
+// You can use Math.min.apply to find the lowest number in an array:
+```
+## d. Object Arrays
+
+*How do you compare numeric properties within an object?*
+
+- The solution is to write a compare function to compare the property values:
+```js
+const cars = [
+  {type:"Volvo", year:2016},
+  {type:"Saab", year:2001},
+  {type:"BMW", year:2010}
+];
+
+console.log(cars.sort(function(a, b){return a.year - b.year}));
+/*
+0: {type: 'Saab', year: 2001}
+1: {type: 'BMW', year: 2010}
+2: {type: 'Volvo', year: 2016}
+*/
+```
+
+*How do you compare string properties within an object?*
+```js
+const cars = [
+  {type:"Volvo", year:2016},
+  {type:"Saab", year:2001},
+  {type:"BMW", year:2010}
+];
+console.log(cars.sort(function(a, b){
+  // change to the lowercase so that by default all lowercase strings will be compared.
+  let x = a.type.toLowerCase();
+  let y = b.type.toLowerCase();
+  if (x < y) {return -1;}
+  if (x > y) {return 1;}
+  return 0;
+}));
+/*
+0: {type: 'BMW', year: 2010}
+1: {type: 'Saab', year: 2001}
+2: {type: 'Volvo', year: 2016}
+*/
+```
+==End of Essentials==
 
 # Tips
 

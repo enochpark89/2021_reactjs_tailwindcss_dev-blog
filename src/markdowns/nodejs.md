@@ -360,6 +360,250 @@ app.listen(PORT, handleListening);
 
 *Tip: always test your code after you have modified a part of a code.*
 
+# 7. URL parameters
+
+*How do you create an url parameters?*
+
+- You can create a url that has a variable in it. 
+```js
+// You can create a URL parameter.
+videoRouter.get("/:id/edit", edit);
+```
+- you can access the URL parameter by console logging req.params
+
+*Tips: Make sure that your hard-typed parameter comes on top of an url parameters.*
+```js
+// NodeJS will check for the keyword upload first in the url and then route it to other URL parameters.
+videoRouter.get("/upload", upload);
+videoRouter.get("/:id", see);
+```
+
+*Can you allow specific url by creating a restriction?*
+
+- You can create a certain criteria with the Express Route.
+*Please refer to the ExpressJS documentation*
+- You can also use regex to set the criteria.
+	- Regex example:
+	- `/(nico\w+)/g` : target all the words that start with nico. 
+
+# 8. Templates
+
+- Instead of responding to GET request with strings, you can respond with HTML or HTML template. 
+- Since we have to set the Header, Footer, Content and other areas, it would be much more efficient to use Pug, which is a recommended way of creating a HTML template.
+
+- Pug is a template engine
+
+# 9. Pug
+
+*How do you install a pug?*
+- configure express to let it know that you are going to use a pug as a view engine. 
+- by default, express will look for the pug template within the current working directory.
+
+*How do you render a pug template?*
+```js
+const handleHome = (req, res) => res.render("home");
+```
+
+*You want to change the current working directory?*
+- By default, express will look for the templates inside the cwd/views.
+- If you want to change this cwd (current working directory), you can do the below.
+
+- IF you don't want to change the current working directory, you have to move the view folder outside src, but you do not want this because you would like to have your files organized within src.
+
+*By default, people see X-Powered-By when you create a server using Express. It is good idea to hide that from the users.*
+
+*What can you do with pug that differs from HTML?*
+- Pug is designed to make the template creating experience easier. Therefore, there are many features that allow us to work easily. 
+
+1. JavaScript insertion
+
+- You can insert JavaScript code within the HTML as below
+```js
+body
+	h1 Watch Video!
+	footer &copy; #{new Date().getFullYear()} Enowiz
+```
+*Pug template naming convention: make sure that all pug templates are names as a lowecase.*
+
+2. Partial
+
+- You can create all templates to have same part. 
+- This can be accomplished using partials. 
+
+src/views/partials/footer.pug
+```pug
+footer &copy; #{new Date().getFullYear()} Wetube 
+```
+
+src/views/watch.pug
+```pug
+doctype html
+html(lang="ko")
+    head
+        title Wetube
+    body
+        h1 Watch Video!
+    include partials/footer.pug
+```
+
+3. Extending Base
+
+- You can create a base file that inherit template to all other templates. 
+
+src/views/base.pug
+```pug
+doctype html
+html(lang="ko")
+    head
+        block head
+    body
+        block content
+    include partials/footer.pug
+```
+
+src/views/home.pug
+```pug
+extends base.pug
+
+block head
+    title Home | Wetube
+
+block content
+    h1 Home!
+```
+
+- if you put the block, you can choose to have different part inside different templates.
+
+4. Variables
+
+- You can set the variables inside a pug template.
+- You can send variables from the controler. 
+
+src/controllers/videoController.js
+```js
+export const trending = (req, res) => res.render("home", { pageTitle: "Home" });
+```
+
+src/views/base.pug
+```pug
+doctype html
+html(lang="ko")
+    head
+        title #{pageTitle} | Wetube
+    body
+        block content
+    include partials/footer.pug
+```
+
+5. Conditional
+
+- You can create h1 like below
+```js
+// we do this because h1 will only have pageTitle value.
+h1=pageTitle
+
+// if you want to mix variable with text do #{variable}
+```
+
+- Create conditional inside .pug.
+```pug
+// assuming that there are fakeuser variable...
+	header
+		if fakeUser.loggedIn
+			small Hello #{fakeUser.username}
+		nav
+
+			ul
+				if fakeUser.loggedIn
+					li 
+						a(href="/logout") Log out
+				else
+					li 
+						a(href="/login") Login
+		h1=pageTitle
+```
+
+6. Iteration
+
+- Usually, data is saved in an arry or an object. 
+- In order to navigate each row or each element in an array or an object, you have to use below.
+*Basically, you are using for-each loop to access each element inside an array.*
+```pug
+    ul
+        each video in videos
+            li=video
+        else
+            li Sorry nothing found.
+```
+
+- Usually the convention is that the an array is represented with 's' at the end to indicate that there are multiple values stored. Then, when you are looping with for-each, you are saying `each <variable with no 's'> in <variables>`
+
+7. Mixins
+
+- Mixins is like a partial but it is a partial that receives a data. 
+- We need a block of HTML that need data. 
+- Mixins are smart partial.
+- Mixins can be better understood with an examples. 
+
+Videos data information:
+```js
+ const videos = [
+    {
+      title: "First Video",
+      rating: 5,
+      comments: 2,
+      createdAt: "2 minutes ago",
+      views: 59,
+      id: 1,
+    },
+    {
+      title: "Second Video",
+      rating: 5,
+      comments: 2,
+      createdAt: "2 minutes ago",
+      views: 59,
+      id: 1,
+    },
+    {
+      title: "Third Video",
+      rating: 5,
+      comments: 2,
+      createdAt: "2 minutes ago",
+      views: 59,
+      id: 1,
+    },
+  ];
+
+```
+
+src/views/mixins/video.pug
+```pug
+// mixins will receive an info data and allow do an extraction as below.
+mixin video(info)
+    div
+        h4=info.title
+        ul
+            li #{info.rating}/5.
+            li #{info.comments} comments.
+            li Posted #{info.createdAt}.
+            li #{info.views} views.
+```
+
+*How do you call a mixin?*
+- You can mixins with '+' sign.
+src/views/home.pug
+```pug
+extends base
+include mixins/video
+
+block content
+    h2 Welcome here you will see the trending videos
+    each potato in videos
+        +video(potato)
+    else
+        li Sorry nothing found.
+```
+src/views/home.pug
 
 # Q&A
 

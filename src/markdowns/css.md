@@ -1968,7 +1968,78 @@ input[type=text] {
 
 # 37. Counters
 
-- 
+- CSS counters are "variables" maintained by CSS whose values can be incremented by CSS rules (to track how many times they are used). Counters let you adjust the appearance of content based on its placement in the document.
+
+- To work with CSS counters we will use the following properties:
+
+  - counter-reset - Creates or resets a counter
+  - counter-increment - Increments a counter value
+  - content - Inserts generated content
+  - counter() or counters() function - Adds the - value of a counter to an element
+```css
+body {
+  counter-reset: section;
+}
+
+h2::before {
+  counter-increment: section;
+  content: "Section " counter(section) ": ";
+}
+```
+
+# 38. Website Layout.
+
+- You create different layouts for your website depending on the purpose of the website. Generally if you want to divide your website, you can set the width into different section such as 33%, 50% etc. 
+
+- However, since we are living in the world where we need to think about other devices such as tablets and phones. It is recommended to use the vh rather than %. I would use the framework that has this capabilities under developement and polish it later.
+
+# 39. Units
+
+- CSS has several different units for expressing a length.
+
+- Absolute length vs Relative length
+
+*Absolute length:*
+cm	centimeters
+mm	millimeters
+in	inches (1in = 96px = 2.54cm)
+px *	pixels (1px = 1/96th of 1in)
+pt	points (1pt = 1/72 of 1in)
+pc	picas (1pc = 12 pt)
+
+*Relative length:*
+em	Relative to the font-size of the element (2em means 2 times the size of the current font)	
+ex	Relative to the x-height of the current font (rarely used)	
+ch	Relative to width of the "0" (zero)	
+rem	Relative to font-size of the root element	
+vw	Relative to 1% of the width of the viewport*	
+vh	Relative to 1% of the height of the viewport*	
+vmin	Relative to 1% of viewport's* smaller dimension	
+vmax	Relative to 1% of viewport's* larger dimension	
+%	Relative to the parent element
+
+# 40. !important
+
+- The !important rule in CSS is used to add more importance to a property/value than normal.
+
+- In fact, if you use the !important rule, it will override ALL previous styling rules for that specific property on that element!
+```css
+#myid {
+  background-color: blue;
+}
+
+.myclass {
+  background-color: gray;
+}
+
+p {b
+  background-color: red !important;
+}
+```
+
+# 41. Math Functions
+
+- The CSS math functions allow mathematical expressions to be used as property values. Here, we will explain the calc(), max() and min() functions.
 
 # Libraries
 

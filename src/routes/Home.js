@@ -43,6 +43,12 @@ const Home = () => {
       <>
         <Title>Welcome to EnoDev Tech Archive! 📱</Title>
         <SubTitle>where you will find extensive resources on Technology and Development!</SubTitle>
+        <Heading>Computer Science Theory</Heading>
+        <Ul>
+          <Li>
+            <Link href="https://everythingcomputerscience.com/" target="_blank">EverythingComputerScience</Link><Span>: A useful information about Computer Science such as video lectures, books, and articles.</Span>
+          </Li>
+        </Ul>
         <Heading>Tech Community</Heading>
         <Link href="https://dev.to/" target="_blank">https://dev.to/</Link><Span>: DEV is a community of software developers getting together to help one another out.</Span>
 
@@ -63,6 +69,7 @@ const Home = () => {
         <Paragraph>HTML</Paragraph>
         <Paragraph>CSS</Paragraph>
         <Ul>
+          <Li><Link href="https://andybrewer.github.io/mvp/" target="_blank">Mvp CSS</Link><Span>: A minimalist stylesheet for HTML elements</Span></Li>
           <Li><Link href="https://fonts.google.com/" target="_blank">Google Fonts</Link><Span>: Access to 1000+ Google Fonts</Span></Li>
           <Li><Link href="https://fontawesome.com/" target="_blank">Font Awesome</Link><Span>: Access to 1500+ Icons</Span></Li>
           <Li><Link href="https://tailwindcss.com/" target="_blank">TailwindCSS</Link><Span>: A utility-first CSS framework</Span></Li>
@@ -86,10 +93,13 @@ const Home = () => {
         <Paragraph>Django</Paragraph>
         <Paragraph>ASP.net</Paragraph>
 
-        <Heading>Dev Toolkits</Heading>
+        <Heading>Dev Tools</Heading>
         <Paragraph>Regex</Paragraph>
         <Paragraph><Link href="https://regex101.com/" target="_blank">Regex101</Link><Span>: A collection of most widely used Regex with test environment.</Span></Paragraph>
         <Paragraph><Link href="https://www.regexpal.com/" target="_blank">Regexpal</Link><Span>: A regex test environment.</Span></Paragraph>
+        <Heading>Testing</Heading>
+        <Heading>Deployment</Heading>
+
 
       </>
     );

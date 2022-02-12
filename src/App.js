@@ -26,6 +26,7 @@ import Home from './routes/Home';
   import Css from './routes/frontend/Css';
   import JavaScript from './routes/frontend/JavaScript';
   import ReactPage from './routes/frontend/React';
+  import Angular from './routes/frontend/Angular';
   import Typescript from './routes/frontend/Typescript';
 
   // back-end
@@ -88,6 +89,11 @@ function App() {
                 <li className="p-1">
                   <Link to="react">
                     <button className="h-10 w-full hover:bg-emerald-300">ReactJS</button>
+                  </Link>
+                </li>
+                <li className="p-1">
+                  <Link to="angular">
+                    <button className="h-10 w-full hover:bg-emerald-300">AngularJS</button>
                   </Link>
                 </li>
                 <li className="p-1">
@@ -170,6 +176,7 @@ function App() {
             <Route path="/css" element={<Css />}/>
             <Route path="/javascript" element={<JavaScript />}/>
             <Route path="/react" element={<ReactPage />}/>
+            <Route path="/angular" element={<Angular />}/>
             <Route path="/typescript" element={<Typescript />}/>
             
             {/* Back-end */}

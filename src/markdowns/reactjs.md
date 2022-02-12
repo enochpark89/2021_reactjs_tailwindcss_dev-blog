@@ -1,7 +1,9 @@
 ### Table of Contents  
-[Introduction](#react)  
-[Essentials Concepts](#essentials) 
-
+1. [Introduction](#react)  
+2. [Essentials](#essentials) 
+3. [Functions](#function)
+4. [Library](#library)
+5. [Q&A](#q&a)
 
 # React
 *What is reactJS?*
@@ -554,6 +556,7 @@ The benefit of this is that we can include some lines of code that we want to be
 # Library
 
 1. Axios - Fetch data from API
+*How do you fetch data from API?*
 - Axios is a nice little layer on top of fetch. 
 - Install: npm i axios.
 ex1: get the JSON file from the API. 
@@ -563,7 +566,18 @@ ex1: get the JSON file from the API.
   };
 ```
 
+2. Styled-components
 
+*How to create HTML with Javascript?*
+- you can use styled components or do it the traditional way with className
+
+a. Install
+```
+npm add styled-components
+```
+
+
+== End of Library ==
 
 =======
 extra
@@ -628,18 +642,7 @@ const JSX = <h1>Hello JSX!</h1>;
 </div>
 ```
 
-3. Comment in JSX.
-- you use {/* */} to wrap around the comment text.
 
-```react
-const JSX = (
-  <div>
-  {/* I can comment within JSX*/}
-    <h1>This is a block of JSX</h1>
-    <p>Here's a subtitle</p>
-  </div>
-);
-```
 
 4. React DOM
 
@@ -912,15 +915,7 @@ export default () => (
 - Switch
   - Render one route at a time  
 
-17. styled-components
 
-*How to create HTML with Javascript?*
-- you can use styled components or do it the traditional way with className
-
-a. Install
-```
-npm add styled-components
-```
 
 18. styled-reset
 
@@ -954,3 +949,38 @@ b.
   - it is a functional components that presents the results. 
 
 == End of Function ==
+
+# Q&A
+
+## 20220210: I get Error: error:0308010C:digital envelope routines::unsupported?
+- You have to include --openssl-legacy-provider as below url says:
+https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+
+## How do you comment within JSX?
+Comment in JSX.
+- you use {/* */} to wrap around the comment text.
+```js
+const JSX = (
+  <div>
+  {/* I can comment within JSX*/}
+    <h1>This is a block of JSX</h1>
+    <p>Here's a subtitle</p>
+  </div>
+);
+``` 
+
+## How do you create a global styles?
+*Please refer to the documentation on the link below for details:* https://scalablecss.com/styled-components-global-styles/
+
+1. Create globalStyles.js
+2. import createGlobalStyle from 'styled-components';
+3. Set a global style. 
+4. Place it on top of your React Tree in app.js so that it may be applied to all other components. 
+
+
+## How do you get today's date?
+```js
+
+```
+
+== End of Q&A ==
