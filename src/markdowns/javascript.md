@@ -1124,6 +1124,321 @@ console.log(cars.sort(function(a, b){
 2: {type: 'Volvo', year: 2016}
 */
 ```
+# 23. Array Iteration
+
+- Array iteration methods operate on every array item.
+
+## a. forEach()
+
+- The forEach() method calls a function (a callback function) once for each array element.
+
+*forEach() will not modify the values inside an original array.*
+
+```js
+const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction (value, index, array) {
+  console.log(value, index, array);
+};
+/*
+value: value inside an array.
+index: 0-4
+array: actual array that forEach() is trying to iterate. 
+
+Output:
+45 0 (5) [45, 4, 9, 16, 25]
+VM135:6 4 1 (5) [45, 4, 9, 16, 25]
+VM135:6 9 2 (5) [45, 4, 9, 16, 25]
+VM135:6 16 3 (5) [45, 4, 9, 16, 25]
+VM135:6 25 4 (5) [45, 4, 9, 16, 25]
+
+*/
+```
+
+- Three arguments (in below orders):
+1. The item value
+2. The item index
+3. The array inselft
+
+## b. map()
+
+- The map() method creates a new array by performing a function on each array element.
+- The map() method does not execute the function for array elements without values.
+
+- The map() method does not change the original array.
+
+ex 1: 
+```js
+const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map((value)=> console.log(value));
+/* output:
+45
+4
+9
+16
+25
+*/
+```
+ex 2: Assign to the value
+```js
+const numbers1 = [45, 4, 9, 16, 25];
+const numbers3 = numbers1.map((value)=> {return value*2});
+console.log(numbers3);
+```
+## c. filter()
+
+- The filter() method creates a new array with array elements that passes a test.
+```js
+const numbers = [45, 4, 9, 16, 25];
+const over18 = numbers.filter(myFunction);
+
+function myFunction(value, index, array) {
+  // write a filter that you want to put.
+  return value > 18;
+}
+console.log(over18);
+// Output: (2) [45, 25]
+```
+
+## d. reduec()
+
+- The reduce() method runs a function on each array element to produce (reduce it to) a single value.
+- The reduce() method works from left-to-right in the array. See also reduceRight().
+
+
+```js
+const numbers = [45, 4, 9, 16, 25];
+let sum = numbers.reduce(myFunction);
+
+function myFunction(total, value, index, array) {
+  // each iteration total will have the total+ value constantly added.
+  return total+ value;
+}
+console.log(sum);
+// Output: 99
+
+```
+
+*Function takes 4 arguments:*
+- The total (the initial value / previously returned value)
+- The item value
+- The item index
+- The array itself
+
+*Please refer to the more test cases in MDN documentation.*
+
+*Real used cases: (There are more but some are hard to understand)*
+
+- Summing an Array Using reduce()
+```js
+const topSix = [
+    { name: "Nigeria", position: "1st", points: 43 },
+    { name: "England", position: "2nd", points: 37 },
+    { name: "USA", position: "3rd", points: 35 },
+    { name: "South Africa", position: "4th", points: 30 },
+    { name: "Brazil", position: "5th", points: 27 },
+    { name: "Korea", position: "6th", points: 23 }
+]
+ 
+const totalPoints = topSix.reduce((acc, currTeam) => acc + currTeam.points, 0);
+ 
+console.log(totalPoints) // Prints 195
+```
+
+
+## e. every()
+
+- The every() method check if all array values pass a test.
+```js
+const numbers = [45, 4, 9, 16, 25];
+let allOver18 = numbers.every(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log(allOver18)
+// Output: false because some did not pass the test. If even one does not pass the test, the funciton will return false. 
+```
+*3 Arguments:*
+- The item value
+- The item index
+- The array itself
+
+- When a callback function uses the first parameter only (value), the other parameters can be omitted:
+
+## f. some()
+- The some() method check if some array values pass a test.
+
+```js
+const numbers = [45, 4, 9, 16, 25];
+let someOver18 = numbers.some(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log(someOver18);
+// returns true because at least one passed the test in the callback function.
+```
+*Function takes 3 arguments:*
+- The item value
+- The item index
+- The array itself
+
+## g. indexOf()
+
+- The indexOf() method searches an array for an element value and returns its position.
+
+```js
+const fruits = ["Apple", "Orange", "Apple", "Mango"];
+let position = fruits.indexOf("Apple") + 1;
+console.log(position);
+// Output: 1 because index of apple is 0 and you added 1.
+```
+
+## h. lastIndexOf()
+
+- Array.lastIndexOf() is the same as Array.indexOf(), but returns the position of the last occurrence of the specified element.
+
+```js
+const fruits = ["Apple", "Orange", "Apple", "Mango"];
+let position = fruits.lastIndexOf("Apple") + 1;
+console.log(position);
+// Output: 3 because the last index of apple (there were two but the last index is referring to the apple of the last occurance) is 2 and you added 1.
+```
+## i. find()
+
+- The find() method returns the value of the first array element that passes a test function.
+
+```js
+const numbers = [4, 9, 16, 25, 29];
+let first = numbers.find(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log(first);
+// Output: 25
+```
+
+- *The find() will go through an array and return the first element that it finds that matches a criteria.*
+
+## j. findIndex()
+- The findIndex() method returns the index of the first array element that passes a test function.
+```js
+const numbers = [4, 9, 16, 25, 29];
+let first = numbers.findIndex(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+console.log(first);
+// Output: 3 (index of the 25 in an array)
+```
+## k. from()
+
+- The Array.from() method returns an Array object from any object with a length property or any iterable object.
+
+```js
+console.log(Array.from("ABCDEFG"));
+// Output: (7) ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+```
+
+## l. Keys()
+- The Array.keys() method returns an Array Iterator object with the keys of an array.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+// Array iterator created
+const keys = fruits.keys();
+
+console.log(keys);
+// Output: Array Iterator {}
+
+for (let x of keys) {
+  console.log(x);
+}
+// 0,1,2,3 (indexes or keys returned)
+
+```
+## m. entries()
+
+- You can use entries to iterate an object and get the key and the value.
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+for (const [key,value] of Object.entries(fruits)) {
+  console.log(`${key} : ${value}`);
+}
+/*
+0 : Banana
+1 : Orange
+2 : Apple
+3 : Mango
+*/
+```
+
+## o. includes()
+- ECMAScript 2016 introduced Array.includes() to arrays. This allows us to check if an element is present in an array (including NaN, unlike indexOf).
+
+```js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+fruits.includes("Mango"); // is true
+```
+
+# 24. Array Const
+
+- It has become a common practice to declare arrays using const:
+
+```js
+const cars = ["Saab", "Volvo", "BMW"];
+
+```
+
+- An array declared with const cannot be reassigned:
+- The keyword const is a little misleading.
+- It does NOT define a constant array. It defines a constant reference to an array.
+- Because of this, we can still change the elements of a constant array.
+
+ex 1: Reassign elements
+```js
+// You can create a constant array:
+const cars = ["Saab", "Volvo", "BMW"];
+// You can change an element:
+cars[0] = "Toyota";
+// You can add an element:
+cars.push("Audi");
+console.log(cars);
+// Output: (4) ['Toyota', 'Volvo', 'BMW', 'Audi']
+```
+
+ex 2: Assigned when declared.
+```js
+cars = ["Saab", "Volvo", "BMW"];
+var cars;
+```
+
+- An array declared with const has Block Scope.
+ex 3: 
+```js
+const cars = ["Saab", "Volvo", "BMW"];
+// Here cars[0] is "Saab"
+{
+  const cars = ["Toyota", "Volvo", "BMW"];
+  // Here cars[0] is "Toyota"
+}
+// Here cars[0] is "Saab"
+```
+- You CANNOT redeclare an array with const.
+```js
+const cars = ["Volvo", "BMW"];   // Allowed
+const cars = ["Volvo", "BMW"];   // Not allowed
+```
+
+
+
 ==End of Essentials==
 
 # Tips
