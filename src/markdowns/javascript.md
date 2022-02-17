@@ -1436,6 +1436,509 @@ const cars = ["Saab", "Volvo", "BMW"];
 const cars = ["Volvo", "BMW"];   // Allowed
 const cars = ["Volvo", "BMW"];   // Not allowed
 ```
+# 26. Date Objects
+
+- JavaScript Date Object lets us work with dates:
+`Tue Feb 15 2022 08:32:56 GMT-0800 (Pacific Standard Time)`
+
+## a. Create a Date object
+
+ex 1: Create a date object
+```js
+const d = new Date();
+
+```
+
+- There are 4 ways to create a date object:
+```js
+// today's date
+new Date()
+// manual date
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+new Date(milliseconds)
+new Date(date string)
+```
+
+1. Create a Date by giving variables
+- 6 numbers specify year, month, day, hour, minute, second:
+```js
+const d = new Date(2018, 15, 24, 10, 33, 30);
+```
+2. new Date(dateString)
+```js
+const d = new Date("October 13, 2014 11:13:00");
+```
+3. new Date(milliseconds)
+- new Date(milliseconds) creates a new date object as zero time plus milliseconds:
+
+```js
+const d = new Date(100000000000);
+```
+
+## b. Create a Date object
+- JavaScript will (by default) output dates in full text string format:
+`Tue Feb 15 2022 08:32:56 GMT-0800 (Pacific Standard Time)`
+
+ex 1: Display date in string - toString()
+```js
+const d = new Date();
+console.log(d.toString());
+// Output: Tue Feb 15 2022 08:51:35 GMT-0800 (Pacific Standard Time)
+```
+
+ex 2: Convert to UTC string
+```js
+const d = new Date();
+console.log(d.toUTCString());
+// Output: Tue, 15 Feb 2022 16:52:06 GMT
+```
+
+ex 3: Convert a date to a more readable format.
+```js
+const d = new Date();
+console.log(d.toDateString());
+// Output: Tue Feb 15 2022
+```
+
+ex 4: Convert a date to an ISO format - toISOString()
+```js
+const d = new Date();
+console.log(d.toISOString());
+// Output: 2020-02-15T08:51:35.816Z
+```
+
+# 27. Date Formats
+
+- There are generally 3 types of JavaScript date input formats:
+```
+ISO Date:"2015-03-25" (The International Standard)
+Short Date:	"03/25/2015"
+Long Date:	"Mar 25 2015" or "25 Mar 2015"
+```
+
+## a. ISO Dates
+
+- ISO 8601 is the international standard for the representation of dates and times.
+- The ISO 8601 syntax (YYYY-MM-DD) is also the preferred JavaScript date format:
+
+ex 1: Full ISO dates
+```js
+const d = new Date("2015-03-25");
+console.log(d);
+// Tue Mar 24 2015 17:00:00 GMT-0700 (Pacific Daylight Time)
+```
+
+- You can also use the partial ISO syntax to create a date:
+ex 2: Partial ISO dates
+```js
+const d = new Date("2015-03");
+const d = new Date("2015");
+```
+
+ex 3: ISO Dates (Date-Time)
+
+- ISO dates can be written with added hours, minutes, and seconds (YYYY-MM-DDTHH:MM:SSZ):
+
+```js
+const d = new Date("2015-03-25T12:00:00Z");
+```
+
+## b. Time Zones
+
+- When setting a date, without specifying the time zone, JavaScript will use the browser's time zone.
+
+- When getting a date, without specifying the time zone, the result is converted to the browser's time zone.
+
+## c. Parsing Dates
+
+- If you have a valid date string, you can use the Date.parse() method to convert it to milliseconds.
+- Date.parse() returns the number of milliseconds between the date and January 1, 1970:
+
+# 28. Date Get Methods
+
+- These methods can be used for getting information from a date object:
+```
+getFullYear():	Get the year as a four digit number (yyyy)
+getMonth():	Get the month as a number (0-11)
+getDate():	Get the day as a number (1-31)
+getHours():	Get the hour (0-23)
+getMinutes():	Get the minute (0-59)
+getSeconds():	Get the second (0-59)
+getMilliseconds():	Get the millisecond (0-999)
+getTime():	Get the time (milliseconds since January 1, 1970)
+getDay():	Get the weekday as a number (0-6)
+Date.now():	Get the time. ECMAScript 5.
+```
+
+ex 1: Get month
+```js
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const d = new Date();
+// d.getMonth() returns the index or number of the month.
+console.log(d.getMonth());
+let month = months[d.getMonth()];
+console.log(month);
+```
+- in the same way, you can use getDate(), getHours(), getMinutes(), getSeconds(), getMilliseconds(), getTime(), getDay().
+
+## b. UTC Date Methods
+- getUTCDate()	Same as getDate(), but returns the UTC date
+- getUTCDay()	Same as getDay(), but returns the UTC day
+- getUTCFullYear()	Same as getFullYear(), but returns the UTC year
+- getUTCHours()	Same as getHours(), but returns the UTC hour
+- getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
+- getUTCMinutes()	Same as getMinutes(), but returns the UTC minutes
+- getUTCMonth()	Same as getMonth(), but returns the UTC month
+- getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds
+
+# 29. Set Date Methods
+
+- Set Date methods let you set date values (years, months, days, hours, minutes, seconds, milliseconds) for a Date Object.
+```
+setDate():	Set the day as a number (1-31)
+setFullYear():	Set the year (optionally month and day)
+setHours():	Set the hour (0-23)
+setMilliseconds():	Set the milliseconds (0-999)
+setMinutes():	Set the minutes (0-59)
+setMonth():	Set the month (0-11)
+setSeconds():	Set the seconds (0-59)
+setTime():	Set the time (milliseconds since January 1, 1970)
+```
+
+- You can modify a date object using SET methods. 
+
+# 30. Math
+
+- The JavaScript Math object allows you to perform mathematical tasks on numbers.
+
+*Math properties available:*
+
+- Math.E        // returns Euler's number
+- Math.PI       // returns PI
+- Math.SQRT2    // returns the square root of 2
+- Math.SQRT1_2  // returns the square root of 1/2
+- Math.LN2      // returns the natural logarithm of 2
+- Math.LN10     // returns the natural logarithm of 10
+- Math.LOG2E    // returns base 2 logarithm of E
+- Math.LOG10E   // returns base 10 logarithm of E
+
+## a. Math.round()
+
+- Math.round(x) returns the nearest integer:
+```js
+console.log(Math.round(4.6));
+// Output: 5
+console.log(Math.round(4.4));
+// Output: 4
+```
+## b. Math.ceil()
+
+- Math.ceil(x) returns the value of x rounded up to its nearest integer:
+
+```js
+console.log(Math.ceil(4.4));
+// Output: 5
+```
+
+## c. Math.floor()
+- Math.floor(x) returns the value of x rounded down to its nearest integer:
+```js
+console.log(Math.floor(4.7));
+// Output: 4
+```
+
+## d. Math.truc()
+
+- Math.trunc(x) returns the integer part of x:
+```js
+console.log(Math.trunc(4.7));
+// Output: 4 which is the integer part of 4.7.
+```
+
+## e. Math.sign()
+
+- Math.sign(x) returns if x is negative, null or positive:
+```js
+console.log(Math.sign(-4));
+console.log(Math.sign(0));
+console.log(Math.sign(4));
+/* Output:
+-1
+0
+1
+*/
+```
+
+- There are many more Math methods that you can use to calcalate.
+
+1. Math.pow()
+2. Math.sqrt()
+3. Math.abs()
+4. Math.sin()
+5. Math.cos()
+6. Math.min() and Math.max()
+7. Math.random()
+8. Math.log()
+- Math.log(x) returns the natural logarithm of x.
+- The natural logarithm returns the time needed to reach a certain level of growth:
+```
+Math.log(1);
+Math.log(3);
+```
+9. Math.log2()
+10. Math.log10()
+
+# 31. Random
+
+*How do you create a random number?*
+- Math.random() will help you achieve your objective.
+- Math.random() returns a random number between 0 (inclusive),  and 1 (exclusive):
+```js
+console.log(Math.random());
+// Output could be ranging from 0 to 1 such as .05443232, .063412, .5588 etc.
+
+```
+*How do we create a random number?*
+
+*How do you create a random generator ranging from 0 to 9*
+
+1. Use Math.random() to create a random number between 0 and 1.
+2. Multiply by 10 to create an integer between 0 and 9. (.99999 would result in 9.9999 so not 10)
+3. Then, we use Math.floor() to get only the integer part of the number.
+
+```js
+// Returns a random integer from 0 to 9:
+Math.floor(Math.random() * 10);
+```
+
+*0 to 100?*
+```js
+// Returns a random integer from 0 to 100:
+Math.floor(Math.random() * 101);
+```
+
+- Using the logic above, they created a convention to calculate the random number given the max and the min.
+```js
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+// Example
+function getRandInteger(5,10);
+// Math.floor(Math.random() * (10 - 5) ) + 5;
+// Math.floor(Math.random() * 5) + 5;
+// Math.floor(Number between 0 to 1 * 5) + 5;
+// Range from 0 to 4 + 5;
+// Range from 5 to 9.
+```
+
+# 32. Booleans
+
+- A JavaScript Boolean represents one of two values: true or false.
+
+- For this, JavaScript has a Boolean data type. It can only take the values true or false.
+  YES / NO
+  ON / OFF
+  TRUE / FALSE
+
+## a. Boolean()
+
+- You can use the Boolean() function to find out if an expression (or a variable) is true:
+```js
+console.log(Boolean(10 > 9));
+// Output: true
+```
+
+## b. Comparisons and Conditions
+
+- ==	equal to - if (day == "Monday")
+- >	greater than - if (salary > 9000)
+- <	less than	if - (age < 18)
+
+## c. Everything without a "Value" is False
+
+```js
+let x = 0;
+let x = "";
+let x; // undefined
+let x = null;
+
+/* 
+0, "", null, undefined, NaN, false are all false.
+*/
+
+```
+
+## 33. Comparison and Logical Operators
+
+- Comparison and Logical operators are used to test for true or false.
+
+Examples of comparison operators:
+- ==, ===, !=, !==, >, <, >=, <=
+Logical operators:
+&& (and), || (or), ! (not)
+
+*What are the difference between == and ===?*
+- == is used to compare two values.
+- === is used to compare two values and their data types.
+
+## 34. Conditions
+
+- You can use `if` and `else` to create conditional statements.
+  - Use if to specify a block of code to be executed, if a specified condition is true
+  - Use else to specify a block of code to be executed, if the same condition is false
+  - Use else if to specify a new condition to test, if the first condition is false
+  - Use switch to specify many alternative blocks of code to be executed
+
+## 35. Switch
+
+- The switch statement is used to perform different actions based on different conditions.
+```js
+switch (new Date().getDay()) {
+  case 0:
+    day = "Sunday";
+    break;
+  case 1:
+    day = "Monday";
+    break;
+  case 2:
+     day = "Tuesday";
+    break;
+  case 3:
+    day = "Wednesday";
+    break;
+  case 4:
+    day = "Thursday";
+    break;
+  case 5:
+    day = "Friday";
+    break;
+  case 6:
+    day = "Saturday";
+}
+```
+## 36. Loop For
+- Loops can execute a block of code a number of times.
+
+```js
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+```
+
+*What kind of loops are available in JavaScript?*
+  - for - loops through a block of code a number of times
+  - for/in - loops through the properties of an object
+  - for/of - loops through the values of an iterable object
+  - while - loops through a block of code while a specified condition is true
+  - do/while - also loops through a block of code while a specified condition is true
+
+*What construct for loop?*
+1. Statement1
+- used to initialize the variable used in the loop.
+2. Statement2
+- used to evaluate the condition of the initial variable.
+3. Statement3
+- used to update the variable used in the loop. (usually in the form of increment or decrement)
+
+
+## 37. For In
+
+## a. The For In Loop
+- The JavaScript for in statement loops through the properties of an object.
+```js
+const person = {fname:"John", lname:"Doe", age:25};
+
+let text = "";
+for (let x in person) {
+  text += person[x];
+}
+```
+
+## b. The For In Arrays
+- The JavaScript for in statement can also loop over the properties of an Array:
+```js
+const numbers = [45, 4, 9, 16, 25];
+
+let txt = "";
+for (let x in numbers) {
+  txt += numbers[x];
+}
+```
+
+## c. forEach()
+
+- The forEach() method calls a function (a callback function) once for each array element.
+
+- It DOES NOT change the original array.
+
+ ## 38. For Of
+
+ - The JavaScript for of statement loops through the values of an iterable object. (this is similar to For In)
+
+- you can iterate over an array and string if you want to.
+
+## 39. Loop While
+
+- The while loop loops through a block of code as long as a specified condition is true.
+```js
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+```
+
+## a. Do While Loop
+
+- The do while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+```js
+do {
+  // code block to be executed
+}
+while (condition);
+```
+
+## 40. Break
+- The `break` statement "jumps out" of a loop.
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+// the loop will step when i ===3 because it has break that stops the loop
+```
+- `break` can be used on a switch.
+
+- The `continue` statement "jumps over" one iteration in the loop.
+- The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
+```js
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
+  text += "The number is " + i + "<br>";
+}
+```
+
+## 41. Iterables
+*What is iterables?*
+- An iterable is an object that can be iterated over, meaning it can be looped over.
+- For example, arrays are iterable objects.
+- An object is iterable if it has a property called Symbol.iterator.
+
+## a. For Of loop
+- The JavaScript for..of statement loops through the elements of an iterable object.
+
+- You can iterate over String, Array, Map, Set, TypedArray, and NodeList objects.
+*What is a set?*
+```js
+const letters = new Set(["a","b","c"]);
+```
+*What is a map?*
+```js
+for (const x of fruits) {
+  // code block to be executed
+}
+```
 
 
 
