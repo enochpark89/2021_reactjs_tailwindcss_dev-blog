@@ -50,16 +50,16 @@ function App() {
     <BrowserRouter>
       <div className="flex flex-col" >
         {/* Header Section */}
-        <div className="py-3 pl-3 flex flex-row bg-white border-b-4 border-b-stone-800 text-2xl">
+        <div className="sticky top-0 z-10 py-3 pl-3 flex flex-row bg-white border-b-4 border-b-stone-800 text-2xl">
           <h1>EnoDev</h1>
           <TeachIcon icon={faDesktop} />  
           <h1>Tech Knowledge Archive</h1>
           <TeachIcon icon={faServer} />
         </div>
 
-        {/* Body Section */}
-        <div className="flex flex-row">
-          <div className="flex flex-col w-100 items-center basis-2/12 h-screen bg-white ">
+        {/* body Section */}
+        <div className="flex flex-row z-0">
+          <div className="flex flex-col w-100 items-center basis-2/12 h-screen bg-white">
             <ul className="py-3 w-full">
               <li className="p-1">
                 <Link to="/">
@@ -166,7 +166,7 @@ function App() {
           </div>
           
         {/* Content Area */}
-        <div className="p-5 basis-10/12 h-screen ">
+        <div className="z-0 p-5 basis-10/12 h-screen ">
           <Routes>
             {/* Home */}
             <Route path="/" element={<Home />} />
@@ -189,6 +189,7 @@ function App() {
         </div>
       </div> 
     </div>
+
   </BrowserRouter>
 </> 
   );

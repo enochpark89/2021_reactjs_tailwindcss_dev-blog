@@ -2,6 +2,7 @@
 
 - [Introduction](#python)
 	- [Essentials](#essentials)
+    - [End of Essentials](#essentialend)
 - [Library](#library)
 - [Framework](#framework)
     - [Django](#django)
@@ -53,6 +54,104 @@ e = 3.23
 ```py
 # you can get the type by using type() function.
 type(variable)
+```
+
+*How can I name variable?*
+
+- Genearlly, there are three options
+
+a. Camal Case
+Each word, except the first, starts with a capital letter:
+```py
+myVariableName = "John"
+```
+b. Pascal Case
+Each word starts with a capital letter:
+```py
+myVariableName = "John"
+```
+
+c. Snake Case
+Each word is separated by an underscore character:
+```py
+my_variable_name = "John"
+```
+
+## Multiple Assignment
+
+- Python allows you to assign values to multiple variables in one line:
+
+```py
+x, y, z = "Orange", "Banana", "Cherry"
+print(x)
+print(y)
+print(z)
+```
+
+*One Value to multiple variables:*
+- And you can assign the same value to multiple variables in one line:
+
+```py
+x = y = z = "Orange"
+print(x)
+print(y)
+print(z)
+"""
+Orange
+Orange
+Orange
+"""
+```
+
+*Collection unpacking*
+- If you have a collection of values in a list, tuple etc. Python allows you to extract the values into variables. 
+- This is **called unpacking**.
+
+```py
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+print(x)
+print(y)
+print(z)
+"""
+Output:
+apple
+banana
+cherry
+"""
+```
+
+## Global Variable
+
+- Variables that are created outside of a function (as in all of the examples above) are known as **global variables**.
+
+- Global variable can be used both inside and outside of functions.
+
+```py
+# x will be a global variable.
+x = "awesome"
+
+def myfunc():
+  print("Python is " + x)
+
+myfunc()
+```
+
+- If you create a variable with the same name inside a function, this variable will be **local**, and can only be used inside the function. 
+
+## Global keyword
+
+- You can create a global variable inside a function using a global keyword.
+
+```py
+def myfunc():
+  global x
+  x = "fantastic"
+
+myfunc()
+
+print("Python is " + x)
+# Output: Python is fantastic
 ```
 
 ## 2. List
@@ -128,6 +227,34 @@ hello
 hello
 """
 ```
+
+## 5. Comments
+
+*How do you create a comment?*
+```py
+#This is a comment
+print("Hello, World!")
+```
+*How do you create a multiline comments?*
+```py
+#This is a comment
+#written in
+#more than just one line
+print("Hello, World!")
+```
+
+*How do you create a bulk comment?*
+```py
+"""
+This is a comment
+written in
+more than just one line
+"""
+```
+
+
+
+# essentialend
 
 
 # Library

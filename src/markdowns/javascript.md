@@ -1940,6 +1940,330 @@ for (const x of fruits) {
 }
 ```
 
+## 42. Sets
+- A JavaScript Set is a collection of unique values.
+- Each value can only occur once in a Set.
+
+```
+new Set():	Creates a new Set
+add():	Adds a new element to the Set
+delete():	Removes an element from a Set
+has():	Returns true if a value exists in the Set
+forEach():	Invokes a callback for each element in the Set
+values():	Returns an iterator with all the values in a Set
+```
+
+- You can create a JavaScript Set by:
+1. Passing an Array to new Set()
+```js
+// Create a Set with variables inside.
+const letters = new Set(["a","b","c"]);
+// Output: Set(3) {'a', 'b', 'c'}
+```
+
+2. Create a new Set and use add() to add values
+```js
+// Create an empty Set, and add variables to it.
+const letters = new Set();
+letters.add("a");
+letters.add("b");
+letters.add("c");
+console.log(letters);
+// Output: Set(3) {'a', 'b', 'c'}
+```
+3. Create a new Set and use add() to add variables
+```js
+// Create a Set
+const letters = new Set();
+
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";
+
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+console.log(letters);
+// Output: Set(3) {'a', 'b', 'c'}
+```
+
+## a. Iterate sets
+*How do you iterate a set?*
+```js
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+letters.forEach(function(value, key, set) {
+  console.log(`${value} is at index ${key} in ${set}`);
+});
+/* Output:
+a is at index a in [object Set]
+b is at index b in [object Set]
+c is at index c in [object Set]
+*/
+```
+
+## b. Size of sets
+*How do you get the size of sets?*
+```js
+const letters = new Set(["a","b","c"]);
+console.log(letters.size);
+// Output: 3
+```
+
+## c. Value of sets
+*How do you get the value of sets?*
+```js
+const letters = new Set(["a","b","c"]);
+console.log(letters.values());
+// Output: SetIterator {'a', 'b', 'c'}
+```
+
+## 43. Maps
+- A Map holds key-value pairs where the keys can be any datatype.
+- A Map remembers the original insertion order of the keys.
+
+## a. Create a new Map
+*How do you create maps?*
+```js
+// Create a Map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+console.log(fruits);
+// Output: Map(3) {'apples' => 500, 'bananas' => 300, 'oranges' => 200}
+```
+
+## b. Add a new key-value pair
+*How do you add values to an empty maps?*
+```js
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+console.log(fruits);
+// Output: Map(3) {'apples' => 500, 'bananas' => 300, 'oranges' => 200}
+```
+
+## c. Get a value using a key
+*How do you access a value with a key?*
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+fruits.get("apples");    // Returns 500
+```
+
+## d. Size of maps
+*How do you get the size of maps?*
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+console.log(fruits.size);
+// Output: 3
+```
+
+## e. Delete a key-value pair
+*How do you delete a key-value pair?*
+- You can delete a key-value pair by using the delete() method.
+- The delete() method returns true if the key-value pair was deleted, and false if the key-value pair was not found.
+- For an argument, you put a key to locate, which key-value you want to delete. 
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+let deleted = fruits.delete("apples");
+console.log(deleted);
+console.log(fruits);
+/*
+true
+Map(2) {'bananas' => 300, 'oranges' => 200}
+*/
+```
+
+## f. Clear a map
+*How do you clear a map?*
+- You can clear a map by using the clear() method.
+- The clear() method removes all key-value pairs from the map.
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+fruits.clear();
+console.log(fruits);
+// Output: Map(0) {}
+```
+## g. Check whether key-value exist or not in a map
+*How do you check an existence of key-value in a map?*
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+console.log(fruits.has("apples"));
+// Output: true
+```
+
+## h. Iterate maps
+*How do you iterate a map?*
+- You can iterate a map using forEach() and entries() methods.
+
+ex 1: use forEach() to iterate
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+fruits.forEach(function(value, key, map) {
+  console.log(`${key} has the ${value} in ${map}`);
+});
+/*
+apples has the 500 in [object Map]
+bananas has the 300 in [object Map]
+oranges has the 200 in [object Map]
+*/
+```
+ex 2: use entries() to iterate
+```js
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+for (let [key, value] of fruits.entries()) {
+  console.log(`${key} has the ${value} in ${fruits}`);
+}
+/*
+apples has the 500 in [object Map]
+bananas has the 300 in [object Map]
+oranges has the 200 in [object Map]
+*/
+```
+
+## 43. typeof
+
+- You can use the typeof operator to find the data type of a JavaScript variable.
+
+```js
+console.log(typeof "Hello");
+console.log(typeof 3.14);
+console.log(typeof false);
+console.log(typeof null);
+console.log(typeof undefined);
+/*
+string
+number
+boolean
+object
+undefined
+*/
+```
+
+## a. constructor property
+*How do you find the constructor of a JavaScript variable?*
+```js
+const a = "Hello";
+console.log(a.constructor);
+// Output: ƒ String() { [native code] }
+```
+
+- Undefined:
+  - In JavaScript, a variable without a value, has the value undefined. The type is also undefined.
+  - The typeof operator returns undefined for variables that are not defined.
+- Null:
+  - In JavaScript null is "nothing". It is supposed to be something that doesn't exist.
+  - *Unfortunately, in JavaScript, the data type of null is an object.*
+- Empty Values:
+  - In JavaScript null is "nothing". It is supposed to be something that doesn't exist.
+
+## 44. Type Conversion
+
+- JavaScript variables can be converted to a new variable and another data type
+- By the use of a JavaScript function *Automatically* by JavaScript itself
+
+## a. String to Number
+*How do you convert a string to a number?*
+```js
+const a = "5";
+const b = Number(a);
+console.log("Converted to: " + b);
+console.log("Type is now: " + typeof b);
+
+/* 
+Converted to: 5
+Type is now: number
+*/
+```
+- You can do the same with parseFloat() and parseInt()
+ex 1: parseFloat()
+```js
+const a = "5.5";
+const b = parseFloat(a);
+console.log("Converted to: " + b);
+console.log("Type is now: " + typeof b);
+/* 
+Converted to: 5.5
+Type is now: number
+*/
+```
+ex 2: parseInt()
+```js
+const a = "5.5";
+const b = parseInt(a);
+console.log("Converted to: " + b);
+console.log("Type is now: " + typeof b);
+/*
+Converted to: 5
+Type is now: number
+*/
+```
+
+## b. Numbers to Strings
+
+Method 1:  Use String()
+```js
+const x = "777"
+console.log(String(x));
+console.log(String(123));
+/* 
+Output: 
+777
+123
+*/
+```
+
+Method 2: Use toString() method.
+```js
+const x = "777"
+console.log(x.toString());
+console.log((123).toString());
+/*
+Output:
+777
+123
+*/
+```
+
+
+## 45. Bitwise
 
 
 ==End of Essentials==
